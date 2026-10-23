@@ -1,0 +1,106 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-contracts:
+    name: Smart Contracts Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.80.0
+          targets: wasm32-unknown-unknown
+          components: clippy, rustfmt
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: liquivault-contracts
+
+      - name: Run Contract Tests
+        run: |
+          cd liquivault-contracts
+          cargo test --workspace --verbose
+
+      - name: Check Formatting & Clippy
+        run: |
+          cd liquivault-contracts
+          cargo fmt --all -- --check
+          cargo clippy --all-targets -- -D warnings
+
+  test-sdk:
+    name: TypeScript SDK Test & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: liquivault-sdk/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd liquivault-sdk
+          npm ci
+
+      - name: Run SDK Tests
+        run: |
+          cd liquivault-sdk
+          npm test
+
+      - name: Build SDK Bundles
+        run: |
+          cd liquivault-sdk
+          npm run build
+
+  test-frontend:
+    name: Frontend App Test & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: liquivault-frontend/package-lock.json
+
+      - name: Build SDK dependency first
+        run: |
+          cd liquivault-sdk
+          npm ci
+          npm run build
+
+      - name: Install Frontend dependencies
+        run: |
+          cd liquivault-frontend
+          npm ci
+
+      - name: Run Frontend Tests
+        run: |
+          cd liquivault-frontend
+          npm test
+
+      - name: Build Next.js Web App
+        run: |
+          cd liquivault-frontend
+          npm run build
