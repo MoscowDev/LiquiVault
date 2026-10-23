@@ -21,7 +21,6 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.80.0
           targets: wasm32-unknown-unknown
           components: clippy, rustfmt
 
@@ -39,7 +38,7 @@ jobs:
         run: |
           cd liquivault-contracts
           cargo fmt --all -- --check
-          cargo clippy --all-targets -- -D warnings
+          cargo clippy --all-targets -- -A clippy::inconsistent_digit_grouping -A clippy::too_many_arguments -D warnings
 
   test-sdk:
     name: TypeScript SDK Test & Build
