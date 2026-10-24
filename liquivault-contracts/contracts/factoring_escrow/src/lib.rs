@@ -2,16 +2,15 @@
 
 pub mod errors;
 pub mod events;
+pub mod interfaces;
 pub mod types;
 
 #[cfg(test)]
 mod test;
 
 use crate::errors::EscrowError;
+use crate::interfaces::{InvoiceRegistryClient, InvoiceStatus, LiquidityPoolClient, RiskTier};
 use crate::types::{DataKey, EscrowConfig, EscrowRecord, EscrowStatus, FactoringQuote, RateConfig};
-use invoice_registry::types::{InvoiceStatus, RiskTier};
-use invoice_registry::InvoiceRegistryContractClient;
-use liquidity_pool::LiquidityPoolContractClient;
 use soroban_sdk::{contract, contractimpl, Address, Env};
 
 const BPS_DENOMINATOR: i128 = 10_000;
@@ -85,7 +84,7 @@ impl FactoringEscrowContract {
         invoice_id: u64,
     ) -> Result<FactoringQuote, EscrowError> {
         let config = Self::load_config(&env)?;
-        let registry_client = InvoiceRegistryContractClient::new(&env, &config.invoice_registry);
+        let registry_client = InvoiceRegistryClient::new(&env, &config.invoice_registry);
         let invoice = registry_client.get_invoice(&invoice_id);
         let now = env.ledger().timestamp();
         Self::compute_quote(
@@ -111,7 +110,7 @@ impl FactoringEscrowContract {
             return Err(EscrowError::ContractPaused);
         }
 
-        let registry_client = InvoiceRegistryContractClient::new(&env, &config.invoice_registry);
+        let registry_client = InvoiceRegistryClient::new(&env, &config.invoice_registry);
         let invoice = registry_client.get_invoice(&invoice_id);
 
         if invoice.owner != merchant {
@@ -180,7 +179,7 @@ impl FactoringEscrowContract {
         let escrow_addr = env.current_contract_address();
         registry_client.mark_factored(&escrow_addr, &invoice_id);
 
-        let pool_client = LiquidityPoolContractClient::new(&env, &config.liquidity_pool);
+        let pool_client = LiquidityPoolClient::new(&env, &config.liquidity_pool);
         pool_client.allocate_liquidity(&escrow_addr, &merchant, &quote.net_payout);
 
         events::emit_invoice_factored(&env, invoice_id, &merchant, &quote);
@@ -220,7 +219,7 @@ impl FactoringEscrowContract {
         Self::extend_instance_ttl(&env);
 
         let escrow_addr = env.current_contract_address();
-        let pool_client = LiquidityPoolContractClient::new(&env, &config.liquidity_pool);
+        let pool_client = LiquidityPoolClient::new(&env, &config.liquidity_pool);
         let (lp_yield, protocol_cut) = pool_client.repay_liquidity(
             &escrow_addr,
             &payer,
@@ -228,7 +227,7 @@ impl FactoringEscrowContract {
             &escrow_record.total_discount,
         );
 
-        let registry_client = InvoiceRegistryContractClient::new(&env, &config.invoice_registry);
+        let registry_client = InvoiceRegistryClient::new(&env, &config.invoice_registry);
         registry_client.mark_settled(&escrow_addr, &invoice_id);
 
         events::emit_invoice_settled(
@@ -277,10 +276,10 @@ impl FactoringEscrowContract {
             .set(&DataKey::ActiveEscrowCount, &active_count.saturating_sub(1));
 
         let escrow_addr = env.current_contract_address();
-        let pool_client = LiquidityPoolContractClient::new(&env, &config.liquidity_pool);
+        let pool_client = LiquidityPoolClient::new(&env, &config.liquidity_pool);
         pool_client.write_off_default(&escrow_addr, &escrow_record.net_payout);
 
-        let registry_client = InvoiceRegistryContractClient::new(&env, &config.invoice_registry);
+        let registry_client = InvoiceRegistryClient::new(&env, &config.invoice_registry);
         registry_client.mark_defaulted(&escrow_addr, &invoice_id);
 
         events::emit_invoice_defaulted(&env, invoice_id, escrow_record.net_payout);

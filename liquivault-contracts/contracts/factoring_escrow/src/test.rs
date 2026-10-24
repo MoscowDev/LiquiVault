@@ -283,7 +283,7 @@ fn test_calculate_discount_matches_spec() {
     let q = c.escrow.calculate_discount(
         &1,
         &100_000_0000000i128,
-        &RiskTier::TierA,
+        &crate::interfaces::RiskTier::TierA,
         &(1_700_000_000 + 86_400 * 73),
     );
     assert_eq!(q.time_discount_amount, 1_200_0000000);

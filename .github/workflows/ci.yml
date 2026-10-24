@@ -21,7 +21,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          targets: wasm32-unknown-unknown
+          targets: wasm32v1-none
           components: clippy, rustfmt
 
       - name: Rust Cache
@@ -33,6 +33,14 @@ jobs:
         run: |
           cd liquivault-contracts
           cargo test --workspace --verbose
+
+      - name: Build Contract WASM
+        run: |
+          cd liquivault-contracts
+          for c in invoice_registry liquidity_pool factoring_escrow; do
+            cargo rustc -p $c --crate-type cdylib --target wasm32v1-none --release
+          done
+          ls -la target/wasm32v1-none/release/*.wasm
 
       - name: Check Formatting & Clippy
         run: |
