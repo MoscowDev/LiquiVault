@@ -8,7 +8,7 @@ Thank you for your interest in contributing to LiquiVault! We welcome contributi
 
 | Directory | Scope | Language / Framework | Primary Commands |
 | :--- | :--- | :--- | :--- |
-| [`liquivault-contracts/`](./liquivault-contracts) | Soroban Core Smart Contracts | Rust (`#![no_std]`), `soroban-sdk = "21.7.7"` | `cargo test --workspace`<br/>`stellar contract build` |
+| [`liquivault-contracts/`](./liquivault-contracts) | Soroban Core Smart Contracts | Rust (`#![no_std]`), `soroban-sdk = "21.7.7"` | `cargo test --workspace`<br/>`./scripts/deploy_testnet.sh` |
 | [`liquivault-sdk/`](./liquivault-sdk) | Client SDK & Transaction Builders | TypeScript, Vitest, Tsup | `npm install`<br/>`npm test`<br/>`npm run build` |
 | [`liquivault-frontend/`](./liquivault-frontend) | Web Application & Telemetry Portal | Next.js 14, Tailwind, shadcn/ui | `npm install`<br/>`npm test`<br/>`npm run dev` |
 | [`docs/`](./docs) | Protocol Specifications & Evidence | Markdown | Documentation source |
@@ -19,9 +19,9 @@ Thank you for your interest in contributing to LiquiVault! We welcome contributi
 
 Before submitting contributions, ensure your environment matches the tested scope:
 
-- **Rust**: `1.80.0+` with target `wasm32-unknown-unknown`
+- **Rust**: `1.84+` with target `wasm32v1-none`
   ```bash
-  rustup target add wasm32-unknown-unknown
+  rustup target add wasm32v1-none
   ```
 - **Stellar CLI**: `21.7.0+`
   ```bash
@@ -66,8 +66,10 @@ cargo test --workspace
 cargo fmt --all -- --check
 cargo clippy --all-targets -- -D warnings
 
-# Build WASM binaries
-stellar contract build
+# Build WASM binaries (crates are rlib, so request cdylib explicitly)
+for c in invoice_registry liquidity_pool factoring_escrow; do
+  cargo rustc -p $c --crate-type cdylib --target wasm32v1-none --release
+done
 ```
 - Smart contracts must maintain `#![no_std]`.
 - All financial arithmetic must use `checked_*` methods (`checked_add`, `checked_mul`, etc.).

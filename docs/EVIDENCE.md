@@ -2,8 +2,8 @@
 
 This document records the exact test suite execution, mathematical assertions, and behavioral proofs verified across the LiquiVault codebase.
 
-**Test Execution Date:** 2026-10-23  
-**Environment:** Stellar Protocol 21/22, Soroban SDK 21.7.7, Rust 1.80+ (target `wasm32-unknown-unknown`), Node.js v22.20.0 x64.  
+**Test Execution Date:** 2026-10-24  
+**Environment:** Soroban SDK 21.7.7, Rust 1.99.1 (host tests on x86_64-pc-windows-gnu; WASM built for `wasm32v1-none`), Node.js v22.20.0 x64, Stellar CLI 28.1.0.  
 **Result:** **42 / 42 Automated Tests Passed (0 Failures, 0 Warnings).**
 
 ---
@@ -29,7 +29,7 @@ cargo test --workspace
 | `test_set_paused_blocks_factoring_and_settlement` | Asserts `set_paused(true)` prevents `factor_invoice` and `settle_invoice` (`ContractPaused`), and unpausing immediately restores functionality. |
 | `test_set_paused_rejects_non_admin` | Confirms non-admin callers receive `Err(EscrowError::Unauthorized)`. |
 | `test_update_rate_config_changes_quote_and_validates` | Asserts updating `tier_b_annual_bps` from 1000 to 1200 increases factoring discount on subsequent quotes. Asserts boundary validation rejects rates > 50% with `InvalidRateConfiguration`. |
-| `test_transfer_admin` | Verifies 2-step admin transfer; old admin is revoked and new admin can pause/unpause. |
+| `test_transfer_admin` | Verifies dual-signature admin transfer (current and new admin both authorize); old admin is revoked and new admin can pause/unpause. |
 
 ### 1.2 Invoice Registry Contract (`contracts/invoice_registry`)
 **Result:** `test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured`
@@ -97,3 +97,20 @@ npm test
 10. `applies losses to junior before senior`.
 11. `blocks junior withdrawals that break the 10% coverage rule`.
 12. `renders the junior tranche card on the investor page` (`JuniorTrancheCard`).
+
+---
+
+## 4. On-Chain Testnet Evidence
+
+The contracts are deployed on Stellar Testnet (protocol 29) and an end-to-end smoke test was run with [`scripts/deploy_testnet.sh`](../liquivault-contracts/scripts/deploy_testnet.sh). Raw output: [`deployments/testnet.json`](../liquivault-contracts/deployments/testnet.json).
+
+| Check | Result |
+| :--- | :--- |
+| Senior / junior deposits | 50,000 / 20,000 test USDC accepted |
+| Mint + verify | Invoice #1 (10,000 USDC, 60 days, Tier B) minted by merchant, verified by oracle |
+| Factor | Quote 1,643.8207 time discount + 500.0000 fee; merchant balance 9,785.6179 USDC |
+| Settle | 214.3821 USDC (10% reserve) to treasury; 1,929.4386 USDC LP yield |
+| Tranche split | Junior assets 20,000 → 20,578.8316 (30%); senior 50,000 → 51,350.6070 (70%) |
+| Final state | Invoice status `Settled`; pool `deployed_capital` back to 0 |
+
+Contract IDs are listed in the [Deployment Guide](deployment.md#0-live-testnet-deployment).

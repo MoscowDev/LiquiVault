@@ -21,7 +21,7 @@ The protocol establishes explicit trust boundaries between privileged protocol a
 
 | Protocol Actor | Capabilities & Privileges | Trust Level | Security Assumptions & Boundaries |
 | :--- | :--- | :--- | :--- |
-| **Contract Admin** | Can pause/unpause contracts, update rate configurations, initiate two-step admin transfers, and trigger default write-offs after grace expiration. | **Trusted** | Must be secured via an institutional multisig (e.g., 3-of-5 Gnosis/Stellar threshold). Cannot arbitrarily siphon pool capital or modify settled invoice terms. |
+| **Contract Admin** | Can pause/unpause contracts, update rate configurations, transfer the admin role (requires the new admin's signature too), and trigger default write-offs after grace expiration. | **Trusted** | Must be secured via an institutional multisig (e.g., 3-of-5 Gnosis/Stellar threshold). Cannot arbitrarily siphon pool capital or modify settled invoice terms. |
 | **Verifier Oracle** | Authorized to invoke `verify_invoice` and assign commercial credit risk tiers (`TierA`, `TierB`, `TierC`). | **Trusted** | Responsible for off-chain document validation (invoices, bills of lading, corporate registry authenticity). Dishonesty permits bad receivables into the pool. |
 | **Debtor** | Designated commercial counterparty responsible for invoice repayment at maturity. | **Untrusted** | Has NO verification rights (mitigating Finding F-1). Cannot factor invoices or modify payment terms. |
 | **Merchant** | Mints tokenized receivables and factors them for immediate pool liquidity. | **Untrusted** | Receives advance capital only after successful oracle underwriting. Cannot verify their own invoices. |
@@ -73,11 +73,11 @@ The protocol establishes explicit trust boundaries between privileged protocol a
 * **Vulnerability Description:** If catastrophic defaults reduce tranche assets to 0 while shares remain outstanding, subsequent deposits could mint shares at a distorted 1:1 exchange rate.
 * **Mitigation Implemented:** If junior assets are reduced to 0 by defaults while `total_shares > 0`, fresh junior deposits are rejected with `TrancheWipedOut`. All subsequent factoring yield is automatically redirected to senior LPs until governance restructures the tranche.
 
-### Finding F-7: Missing Administrative Events & Two-Step Ownership Transfers
+### Finding F-7: Missing Administrative Events & Unsafe Admin Transfers
 * **Severity:** **Low**
 * **Status:** **RESOLVED**
 * **Vulnerability Description:** Immediate single-step admin transfers pose a risk of permanent contract lockup if an invalid address is supplied.
-* **Mitigation Implemented:** Implemented a secure two-step admin transfer procedure (`transfer_admin` proposing a pending admin, followed by acceptance). Added explicit event emissions for administrative parameter updates.
+* **Mitigation Implemented:** `factoring_escrow::transfer_admin` requires authorization from both the current and the new admin in the same call, so control cannot be handed to a mistyped or unowned address. (This is a single dual-signature call, not a propose/accept flow; `invoice_registry` and `liquidity_pool` do not yet support admin transfer.) Added explicit event emissions for administrative parameter updates.
 
 ---
 

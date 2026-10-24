@@ -1,6 +1,6 @@
 # LiquiVault Protocol Architecture
 
-LiquiVault is an institutional-grade, decentralized trade receivables tokenization and liquidity vault protocol built on **Stellar Soroban** (`#![no_std]`, `soroban-sdk = "21.7.7"`). It provides global SMEs and corporate merchants with instantaneous, risk-adjusted USDC working capital backed by an automated, tranched liquidity pool.
+LiquiVault is a decentralized invoice factoring protocol with a tranched liquidity pool, built on **Stellar Soroban** (`#![no_std]`, `soroban-sdk = "21.7.7"`). It gives merchants risk-adjusted USDC working capital funded by a senior/junior tranched liquidity pool.
 
 See [Verified Evidence](EVIDENCE.md) for concrete test proofs, [Storage & TTL Policy](storage.md) for ledger footprint details, and [Known Limitations](KNOWN_LIMITATIONS.md) for operational boundaries.
 
@@ -8,7 +8,7 @@ See [Verified Evidence](EVIDENCE.md) for concrete test proofs, [Storage & TTL Po
 
 ## 1. System Topology & Architectural Model
 
-The protocol comprises three modular layers: an institutional Next.js 14 frontend, a typed TypeScript SDK with native XDR builders, and three core Soroban smart contracts.
+The protocol comprises three modular layers: a Next.js 14 frontend, a typed TypeScript SDK with native XDR builders, and three core Soroban smart contracts.
 
 ```mermaid
 flowchart TD

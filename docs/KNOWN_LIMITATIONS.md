@@ -10,7 +10,7 @@ For empirical test evidence, see [Verified Evidence](EVIDENCE.md). For complete 
 
 | Operational Dimension | Supported & Verified Envelope | Unverified / Unsupported Scope |
 | :--- | :--- | :--- |
-| **Blockchain Protocol** | Stellar Soroban Protocol 21 and 22 | Protocol versions < 20 or experimental future protocol changes. |
+| **Blockchain Protocol** | Stellar Soroban; contracts built with soroban-sdk 21.7.7 and deployed on Testnet (protocol 29) | Protocol versions < 20 or experimental future protocol changes. |
 | **Soroban SDK** | `soroban-sdk = "21.7.7"` | Earlier SDK releases (v20.x, v0.x). |
 | **Toolchain & Target** | Rust `1.80.0+`, target `wasm32-unknown-unknown` | Non-standard Rust toolchains or native x86 targets for contract binaries. |
 | **Host Architecture** | Node.js v20.x, v22.x on Linux x64, macOS arm64/x64, Windows x64 | Node.js versions < 18.x. |

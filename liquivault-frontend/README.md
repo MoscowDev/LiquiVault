@@ -6,7 +6,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8.svg)](https://tailwindcss.com)
 [![Test Suite](https://img.shields.io/badge/Tests-12%2F12%20Passed-success.svg)](../docs/EVIDENCE.md)
 
-Institutional B2B Trade Receivables Factoring, Algorithmic Discount Pricing, and Liquidity Pool Dashboard built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, **shadcn/ui**, **Freighter Wallet API**, and **`@liquivault/sdk`** on **Stellar Soroban**.
+B2B invoice factoring, risk-tiered discount pricing, and Liquidity Pool Dashboard built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, **shadcn/ui**, **Freighter Wallet API**, and **`@liquivault/sdk`** on **Stellar Soroban**.
 
 ---
 

@@ -6,7 +6,7 @@
 [![Build](https://img.shields.io/badge/Build-ESM%20%2B%20CJS-green.svg)](./package.json)
 [![Test Suite](https://img.shields.io/badge/Tests-11%2F11%20Passed-success.svg)](../docs/EVIDENCE.md)
 
-Institutional-grade TypeScript SDK (dual ESM and CJS distributions) for interacting with the **LiquiVault** decentralized invoice factoring and liquidity pool protocol on **Stellar Soroban**.
+TypeScript SDK (dual ESM and CJS distributions) for interacting with the **LiquiVault** decentralized invoice factoring and liquidity pool protocol on **Stellar Soroban**.
 
 ---
 

@@ -6,7 +6,7 @@
 [![Rust](https://img.shields.io/badge/Rust-1.80%2B-red.svg)](https://www.rust-lang.org)
 [![Test Suite](https://img.shields.io/badge/Tests-19%2F19%20Passed-success.svg)](../docs/EVIDENCE.md)
 
-**Institutional-Grade Decentralized Trade Invoice Factoring & Tranched Liquidity Protocol on Stellar Soroban** (`soroban-sdk = "21.7.7"`, `#![no_std]`).
+**Soroban contracts for invoice factoring with a senior/junior tranched liquidity pool** (pre-audit, testnet only) (`soroban-sdk = "21.7.7"`, `#![no_std]`).
 
 ---
 
@@ -70,8 +70,10 @@ cargo test --workspace
 cargo fmt --all -- --check
 cargo clippy --all-targets -- -D warnings
 
-# Build optimized Soroban WASM artifacts
-stellar contract build
+# Build Soroban WASM artifacts (crates are rlib, so request cdylib explicitly)
+for c in invoice_registry liquidity_pool factoring_escrow; do
+  cargo rustc -p $c --crate-type cdylib --target wasm32v1-none --release
+done
 ```
 
 ---
