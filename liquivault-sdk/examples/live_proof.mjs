@@ -12,8 +12,8 @@ function usdcToStroops(usdc) {
 }
 
 console.log('='.repeat(80));
-console.log('   LIQUIVAULT PROTOCOL - REAL-TIME END-TO-END EXECUTION PROOF');
-console.log('   Stellar Soroban Institutional Factoring & Tranched Liquidity Engine');
+console.log('   LIQUIVAULT PROTOCOL - OFFLINE QUOTE & TRANCHE MATH WALKTHROUGH');
+console.log('   (pure SDK math, no network calls; on-chain run: liquivault-contracts/deployments/testnet.json)');
 console.log('='.repeat(80));
 
 const config = {
@@ -24,10 +24,10 @@ const config = {
     networkPassphrase: 'Test SDF Network ; September 2015',
   },
   contracts: {
-    invoiceRegistry: 'CBREGISTRY11111111111111111111111111111111111111111111111',
-    liquidityPool: 'CBPOOL111111111111111111111111111111111111111111111111111',
-    factoringEscrow: 'CBESCROW11111111111111111111111111111111111111111111111111',
-    usdcToken: 'CBUSDC1111111111111111111111111111111111111111111111111111',
+    invoiceRegistry: 'CBYTATTI4S32LCK5W2N4P6U64MAGROW5ZH7DOXAO4CIOY2KWDNIDLSQY',
+    liquidityPool: 'CCRZRIUMDZ67YDHWMPUFO2LZNGKS2QDRPNK23MUVBYMXYHDDQNNDULGR',
+    factoringEscrow: 'CBQGNTVLNXV2LZ47GTOUK2TQNTNBNWUWSAKXVYHCURAVL7UZENQ7U42C',
+    usdcToken: 'CCELQDGSNDDQHVDXQM3CXBCR4LOGLVAIKKET4RY72MZP7SKTEOY2RO2K',
   },
 };
 
@@ -139,5 +139,5 @@ console.log(`  -> Maximum Permitted Junior Withdrawal: ${stroopsToUsdc(juniorPos
 console.log(`  -> Full Junior Withdrawal Attempt: REJECTED with JuniorCoverageTooLow (Safety Guard Active).`);
 
 console.log('\n' + '='.repeat(80));
-console.log('   RESULT: ALL 8 PHASES VALIDATED - PROTOCOL FUNCTIONS WITH 100% INTEGRITY');
+console.log('   RESULT: ALL 8 PHASES COMPUTED (OFFLINE)');
 console.log('='.repeat(80));
