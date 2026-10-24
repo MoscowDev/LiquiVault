@@ -102,7 +102,7 @@ npm test
 
 ## 4. On-Chain Testnet Evidence
 
-The contracts are deployed on Stellar Testnet (protocol 29) and an end-to-end smoke test was run with [`scripts/deploy_testnet.sh`](../liquivault-contracts/scripts/deploy_testnet.sh). Raw output: [`deployments/testnet.json`](../liquivault-contracts/deployments/testnet.json).
+The contracts are deployed on Stellar Testnet (protocol 29) and an end-to-end smoke test was run with [`scripts/deploy_testnet.sh`](https://github.com/MoscowDev/liquivault-contracts/blob/main/scripts/deploy_testnet.sh). Raw output: [`deployments/testnet.json`](https://github.com/MoscowDev/liquivault-contracts/blob/main/deployments/testnet.json).
 
 | Check | Result |
 | :--- | :--- |

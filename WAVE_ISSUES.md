@@ -1,6 +1,6 @@
 # Drips Wave Issues
 
-Each item below is opened as a GitHub issue with the `wave-task` label (template: `.github/ISSUE_TEMPLATE/wave_task.md`). Complexity: Trivial / Medium / High.
+Each item below is opened as a GitHub issue **in the repository named in its section heading**, with the `wave-task` label (template: `.github/ISSUE_TEMPLATE/wave_task.md`). Complexity: Trivial / Medium / High.
 
 ## liquivault-contracts
 1. **Add `liquidity_pool` edge-case tests** (Medium): zero deposit, over-withdraw, share price after default write-off, multiple LPs pro-rata. *Accept:* `cargo test -p liquidity_pool` covers each case.
@@ -22,7 +22,7 @@ Each item below is opened as a GitHub issue with the `wave-task` label (template
 13. **Dashboard: show pool utilization and default rate** (High): metrics chart from live contract reads (`get_pool_state`, `get_junior_state`, `get_protocol_metrics`).
 14. **Read live tranche balances on the investor page** (Medium): replace mock senior/junior figures with `get_pool_state` / `get_junior_state` from the testnet pool.
 
-## Docs & tooling
+## Docs & tooling (CI item goes to liquivault-contracts)
 15. **[COMPLETED] `SECURITY.md` and threat model** (Medium): see [`docs/SECURITY.md`](docs/SECURITY.md).
 16. **[COMPLETED] Testnet deployment guide** (Medium): see [`docs/deployment.md`](docs/deployment.md) and `liquivault-contracts/scripts/deploy_testnet.sh`.
 17. **Run the deploy smoke test in CI against a local Stellar quickstart node** (High): start `stellar/quickstart` in GitHub Actions, run `deploy_testnet.sh` against it (network made configurable), and fail on any error.

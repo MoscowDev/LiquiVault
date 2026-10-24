@@ -4,14 +4,16 @@ Thank you for your interest in contributing to LiquiVault! We welcome contributi
 
 ---
 
-## 1. Monorepo Structure
+## 1. Repositories
 
-| Directory | Scope | Language / Framework | Primary Commands |
+LiquiVault is split into three code repositories plus this overview repository. Open issues and pull requests in the repository that owns the code you are changing.
+
+| Repository | Scope | Language / Framework | Primary Commands |
 | :--- | :--- | :--- | :--- |
-| [`liquivault-contracts/`](./liquivault-contracts) | Soroban Core Smart Contracts | Rust (`#![no_std]`), `soroban-sdk = "21.7.7"` | `cargo test --workspace`<br/>`./scripts/deploy_testnet.sh` |
-| [`liquivault-sdk/`](./liquivault-sdk) | Client SDK & Transaction Builders | TypeScript, Vitest, Tsup | `npm install`<br/>`npm test`<br/>`npm run build` |
-| [`liquivault-frontend/`](./liquivault-frontend) | Web Application & Telemetry Portal | Next.js 14, Tailwind, shadcn/ui | `npm install`<br/>`npm test`<br/>`npm run dev` |
-| [`docs/`](./docs) | Protocol Specifications & Evidence | Markdown | Documentation source |
+| [`liquivault-contracts/`](https://github.com/MoscowDev/liquivault-contracts) | Soroban Core Smart Contracts | Rust (`#![no_std]`), `soroban-sdk = "21.7.7"` | `cargo test --workspace`<br/>`./scripts/deploy_testnet.sh` |
+| [`liquivault-sdk/`](https://github.com/MoscowDev/liquivault-sdk) | Client SDK & Transaction Builders | TypeScript, Vitest, Tsup | `npm install`<br/>`npm test`<br/>`npm run build` |
+| [`liquivault-frontend/`](https://github.com/MoscowDev/liquivault-frontend) | Web Application & Telemetry Portal | Next.js 14, Tailwind, shadcn/ui | `npm install`<br/>`npm test`<br/>`npm run dev` |
+| [`docs/`](./docs) (this repo) | Protocol Specifications & Evidence | Markdown | Documentation source |
 
 ---
 
@@ -54,10 +56,11 @@ We enforce [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## 4. Verification Standards
 
-Every Pull Request must pass the full test suite across all three workspace modules before merging.
+Every Pull Request must pass the CI of the repository it targets. Changes that span repositories (for example new contract IDs) need a PR in each.
 
 ### 4.1 Smart Contracts
 ```bash
+git clone https://github.com/MoscowDev/liquivault-contracts.git
 cd liquivault-contracts
 # Run workspace test suite
 cargo test --workspace
@@ -78,6 +81,7 @@ done
 
 ### 4.2 TypeScript SDK
 ```bash
+git clone https://github.com/MoscowDev/liquivault-sdk.git
 cd liquivault-sdk
 npm install
 npm test
@@ -88,6 +92,7 @@ npm run build
 
 ### 4.3 Web Frontend
 ```bash
+git clone https://github.com/MoscowDev/liquivault-frontend.git
 cd liquivault-frontend
 npm install
 npm test
@@ -112,9 +117,7 @@ If you are modifying smart contract logic, consult [SECURITY.md](docs/SECURITY.m
 
 Before opening your Pull Request, ensure:
 - [ ] Comprehensive unit tests cover new functionality or edge cases.
-- [ ] `cargo test --workspace` passes (19/19 contract tests).
-- [ ] `npm test` in `liquivault-sdk` passes (11/11 SDK tests).
-- [ ] `npm test` in `liquivault-frontend` passes (12/12 frontend tests).
+- [ ] The target repository's test suite passes (contracts: `cargo test --workspace`; SDK and frontend: `npm test`).
 - [ ] All new files contain clean formatting and adhere to repository linting standards.
 - [ ] Documentation has been updated to reflect any state, parameter, or interface changes.
 - [ ] Pull request template is filled out completely.

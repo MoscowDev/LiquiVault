@@ -6,7 +6,7 @@ This guide covers deploying, initializing, and smoke-testing LiquiVault on **Ste
 
 ## 0. Live Testnet Deployment
 
-The protocol is deployed on Stellar Testnet. The full record (accounts and smoke-test output) is in [`liquivault-contracts/deployments/testnet.json`](../liquivault-contracts/deployments/testnet.json).
+The protocol is deployed on Stellar Testnet. The full record (accounts and smoke-test output) is in [`liquivault-contracts/deployments/testnet.json`](https://github.com/MoscowDev/liquivault-contracts/blob/main/deployments/testnet.json).
 
 | Contract | Testnet ID |
 | :--- | :--- |
@@ -44,11 +44,12 @@ The protocol is deployed on Stellar Testnet. The full record (accounts and smoke
 ## 2. One-Command Deploy
 
 ```bash
+git clone https://github.com/MoscowDev/liquivault-contracts.git
 cd liquivault-contracts
 ./scripts/deploy_testnet.sh
 ```
 
-The [script](../liquivault-contracts/scripts/deploy_testnet.sh) builds the WASM, creates and funds identities (`lv-admin`, `lv-verifier`, `lv-treasury`, `lv-merchant`, `lv-debtor`, `lv-lp`), issues test USDC, deploys and initializes all three contracts, runs the smoke test, and writes `deployments/testnet.json`. Each run creates a fresh deployment.
+The [script](https://github.com/MoscowDev/liquivault-contracts/blob/main/scripts/deploy_testnet.sh) builds the WASM, creates and funds identities (`lv-admin`, `lv-verifier`, `lv-treasury`, `lv-merchant`, `lv-debtor`, `lv-lp`), issues test USDC, deploys and initializes all three contracts, runs the smoke test, and writes `deployments/testnet.json`. Each run creates a fresh deployment.
 
 ---
 
@@ -124,6 +125,7 @@ stellar contract invoke --id $ESCROW --source lv-debtor --network testnet -- set
 `liquivault-frontend/.env.example` is pre-filled with the testnet IDs above:
 
 ```bash
+git clone https://github.com/MoscowDev/liquivault-frontend.git
 cd liquivault-frontend
 cp .env.example .env.local
 npm run dev

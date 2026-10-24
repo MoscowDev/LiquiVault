@@ -40,7 +40,7 @@ This lets one pool serve two very different kinds of investor, and gives senior 
 | `factoring_escrow` | [`CBQGNTVLNXV2LZ47GTOUK2TQNTNBNWUWSAKXVYHCURAVL7UZENQ7U42C`](https://stellar.expert/explorer/testnet/contract/CBQGNTVLNXV2LZ47GTOUK2TQNTNBNWUWSAKXVYHCURAVL7UZENQ7U42C) |
 | Test USDC (not Circle) | [`CCELQDGSNDDQHVDXQM3CXBCR4LOGLVAIKKET4RY72MZP7SKTEOY2RO2K`](https://stellar.expert/explorer/testnet/contract/CCELQDGSNDDQHVDXQM3CXBCR4LOGLVAIKKET4RY72MZP7SKTEOY2RO2K) |
 
-A full on-chain smoke test (deposit → mint → verify → factor → settle) ran against this deployment: a 10,000 USDC, 60-day, Tier B invoice paid the merchant 9,785.62 USDC, and on settlement the 1,929.44 USDC LP yield split 578.83 to junior and 1,350.61 to senior. Results: [`deployments/testnet.json`](liquivault-contracts/deployments/testnet.json). Redeploy with [`scripts/deploy_testnet.sh`](liquivault-contracts/scripts/deploy_testnet.sh); see the [Deployment Guide](docs/deployment.md).
+A full on-chain smoke test (deposit → mint → verify → factor → settle) ran against this deployment: a 10,000 USDC, 60-day, Tier B invoice paid the merchant 9,785.62 USDC, and on settlement the 1,929.44 USDC LP yield split 578.83 to junior and 1,350.61 to senior. Results: [`deployments/testnet.json`](https://github.com/MoscowDev/liquivault-contracts/blob/main/deployments/testnet.json). Redeploy with [`scripts/deploy_testnet.sh`](https://github.com/MoscowDev/liquivault-contracts/blob/main/scripts/deploy_testnet.sh); see the [Deployment Guide](docs/deployment.md).
 
 ---
 
@@ -150,14 +150,14 @@ With a pool of 60,000 USDC senior and 20,000 USDC junior (the setup in `test_jun
 
 ## Repository Structure
 
-LiquiVault is structured as a modular monorepo:
+LiquiVault is split into three repositories that work together. This repository is the project overview and holds the shared documentation.
 
-| Directory | Component | Tech Stack | Role & Responsibilities |
+| Repository | Component | Tech Stack | Role & Responsibilities |
 | :--- | :--- | :--- | :--- |
-| [`./liquivault-contracts`](./liquivault-contracts) | Soroban Smart Contracts | Rust (`#![no_std]`), `soroban-sdk 21.7.7` | `invoice_registry`, `liquidity_pool`, and `factoring_escrow`. Checked math, CEI pattern, state TTL extension. |
-| [`./liquivault-sdk`](./liquivault-sdk) | TypeScript Client SDK | TypeScript, `@stellar/stellar-sdk`, `tsup`, `vitest` | Dual ESM/CJS build. Typed contract clients, Soroban XDR transaction builders, Freighter SEP-10 wallet adapter. |
-| [`./liquivault-frontend`](./liquivault-frontend) | Web Application | Next.js 14 (App Router), Tailwind, `shadcn/ui` | Merchant Factoring Portal, Investor Liquidity Vault, and Protocol Dashboard. |
-| [`./docs`](./docs) | Architecture & Specs | Markdown | Full technical specifications, storage layout, security threat model, evidence, and deployment runbooks. |
+| [`liquivault-contracts`](https://github.com/MoscowDev/liquivault-contracts) | Soroban Smart Contracts | Rust (`#![no_std]`), `soroban-sdk 21.7.7` | `invoice_registry`, `liquidity_pool`, and `factoring_escrow`. Checked math, CEI pattern, state TTL extension. |
+| [`liquivault-sdk`](https://github.com/MoscowDev/liquivault-sdk) | TypeScript Client SDK | TypeScript, `@stellar/stellar-sdk`, `tsup`, `vitest` | Dual ESM/CJS build. Typed contract clients, Soroban XDR transaction builders, Freighter SEP-10 wallet adapter. |
+| [`liquivault-frontend`](https://github.com/MoscowDev/liquivault-frontend) | Web Application | Next.js 14 (App Router), Tailwind, `shadcn/ui` | Merchant Factoring Portal, Investor Liquidity Vault, and Protocol Dashboard. |
+| [`docs/`](./docs) (this repo) | Architecture & Specs | Markdown | Full technical specifications, storage layout, security threat model, evidence, and deployment runbooks. |
 
 ---
 
@@ -166,6 +166,7 @@ LiquiVault is structured as a modular monorepo:
 ### 1. Smart Contracts (`liquivault-contracts`)
 Requires Rust `1.84+` with the `wasm32v1-none` target and `stellar-cli` `22+`:
 ```bash
+git clone https://github.com/MoscowDev/liquivault-contracts.git
 cd liquivault-contracts
 
 # Execute full workspace unit and integration test suite (19 tests)
@@ -183,6 +184,7 @@ done
 ### 2. TypeScript SDK (`liquivault-sdk`)
 Provision Node.js v20.x or v22.x:
 ```bash
+git clone https://github.com/MoscowDev/liquivault-sdk.git
 cd liquivault-sdk
 
 # Install dependencies
@@ -229,6 +231,7 @@ console.log('Instant Net Payout:', quote.netPayout); // 97,500 USDC
 
 ### 3. Web Application (`liquivault-frontend`)
 ```bash
+git clone https://github.com/MoscowDev/liquivault-frontend.git
 cd liquivault-frontend
 
 # Configure environment variables
@@ -282,7 +285,7 @@ See the complete verification report in [Verified Evidence](docs/EVIDENCE.md).
 | [**Security Policy & Threat Model**](docs/SECURITY.md) | Vulnerability disclosure SLA, trust boundary matrix, in-depth analysis of Findings F-1 to F-7, and formal invariants. |
 | [**Known Limitations & Boundaries**](docs/KNOWN_LIMITATIONS.md) | Operational envelope, tested versions, economic boundaries, and pre-mainnet roadmap. |
 | [**Testnet Deployment Runbook**](docs/deployment.md) | Live testnet contract IDs, one-command deploy script, and manual Stellar CLI steps. |
-| [**Contributing Guidelines**](CONTRIBUTING.md) | Monorepo developer guide, branching conventions, pull request checklist, and code standards. |
+| [**Contributing Guidelines**](CONTRIBUTING.md) | Which repo to work in, setup, branching conventions, pull request checklist, and code standards. |
 | [**Code of Conduct**](CODE_OF_CONDUCT.md) | Contributor Covenant v2.1 community standards. |
 
 ---
