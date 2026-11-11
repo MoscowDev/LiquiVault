@@ -1,3 +1,5 @@
+> Local repair status (November 2026): the three sibling repositories contain contract protections, a real Stellar transaction SDK, and a frontend using on-chain state. Historical testnet addresses still run the earlier contracts and must be replaced after a fresh deployment. The frontend uses a test token; SEP-10/KYB and SEP-24 are not implemented. See the sibling READMEs for current behavior and verification limits.
+
 # LiquiVault Protocol
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
