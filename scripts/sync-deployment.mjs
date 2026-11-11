@@ -1,0 +1,25 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import assert from 'node:assert/strict';
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const record = JSON.parse(readFileSync(resolve(root, 'liquivault-contracts/deployments/testnet.json'), 'utf8'));
+assert.equal(record.network, 'testnet');
+assert.equal(record.smokeTest.assertionsPassed, true, 'Require the current verified signed proof');
+assert.ok(record.transactions.length > 0);
+const contracts = record.contracts;
+for (const value of Object.values(contracts)) assert.match(value, /^C[A-Z2-7]{55}$/);
+writeFileSync(resolve(root, 'liquivault-sdk/tests/testnet-deployment.json'), JSON.stringify(record, null, 2) + '\n');
+const envPath = resolve(root, 'liquivault-frontend/.env.example');
+let env = readFileSync(envPath, 'utf8');
+const mapping = { NEXT_PUBLIC_INVOICE_ASSET_CONTRACT_ID: contracts.invoiceRegistry, NEXT_PUBLIC_LIQUIDITY_POOL_CONTRACT_ID: contracts.liquidityPool,
+  NEXT_PUBLIC_ESCROW_ROUTING_CONTRACT_ID: contracts.factoringEscrow, NEXT_PUBLIC_USDC_TOKEN_CONTRACT_ID: contracts.usdcToken };
+for (const [key, value] of Object.entries(mapping)) env = env.replace(new RegExp(`^${key}=.*$`, 'm'), `${key}=${value}`);
+writeFileSync(envPath, env);
+const sdkPath = resolve(root, 'liquivault-frontend/lib/sdk.ts');
+let source = readFileSync(sdkPath, 'utf8');
+const previous = source.match(/C[A-Z2-7]{55}/g);
+assert.equal(previous?.length, 4, 'Unexpected frontend defaults; update the sync tool');
+[contracts.invoiceRegistry, contracts.liquidityPool, contracts.factoringEscrow, contracts.usdcToken].forEach((value, index) => { source = source.replace(previous[index], value); });
+writeFileSync(sdkPath, source);
+console.log(`Synchronized deployment ${record.runId}; no private keys copied.`);

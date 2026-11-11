@@ -1,28 +1,30 @@
-# Drips Wave Issues
+# Wave preparation and unfinished backlog
 
-Each item below is opened as a GitHub issue **in the repository named in its section heading**, with the `wave-task` label (template: `.github/ISSUE_TEMPLATE/wave_task.md`). Complexity: Trivial / Medium / High.
+The reviewed issue descriptions are in [docs/wave/issues.json](docs/wave/issues.json). They describe unfinished work rather than completed repair tasks. Each includes code context, bounded acceptance criteria and verification commands. Suggested complexity is advisory; the maintainer sets program complexity after repository approval.
 
-## liquivault-contracts
-1. **Add `liquidity_pool` edge-case tests** (Medium): zero deposit, over-withdraw, share price after default write-off, multiple LPs pro-rata. *Accept:* `cargo test -p liquidity_pool` covers each case.
-2. **Add `invoice_registry` negative tests** (Medium): non-verifier verify, double verify, past maturity mint, zero face value. *Accept:* each returns the expected error.
-3. **Add `update_verifier` / `transfer_admin` to `invoice_registry`** (Medium): mirror `factoring_escrow::transfer_admin`, with events and tests.
-4. **Property/fuzz tests for `compute_quote`** (High): discount never exceeds face value, monotonic in duration and risk tier.
-5. **[COMPLETED] Document contract storage and TTL policy** (Trivial): see [`docs/storage.md`](docs/storage.md).
-6. **Guard against drift between `factoring_escrow/src/interfaces.rs` and `invoice_registry` types** (Medium): the escrow keeps wire-compatible copies of `RiskTier`, `InvoiceStatus`, and `InvoiceRecord`. Add a test that round-trips each value through both definitions (or extract a shared no-export `types` crate). *Accept:* changing a field or discriminant in one crate fails `cargo test`.
-7. **Add `liquidity_pool` admin transfer** (Medium): dual-signature `transfer_admin` for the pool, matching `factoring_escrow::transfer_admin`, with events and tests.
+Publication status and actual issue URLs are recorded in [docs/wave/published.json](docs/wave/published.json). Until that file contains a returned GitHub URL, an entry is a prepared draft, not an opened issue. No PR, outside contributor, adoption, approval or reward history is fabricated.
 
-## liquivault-sdk
-8. **Unit tests for admin transaction builders** (Trivial): cover `buildSetEscrowPausedTx`, `buildUpdateRateConfigTx`, and the `transfer_admin` builder (correct contract ID, method name, and argument XDR).
-9. **Typed error mapping** (Medium): map contract error codes (`EscrowError`, `RegistryError`, `PoolError`) to named TS errors.
-10. **Live testnet example** (Medium): add `examples/testnet_quote.mjs` that reads `preview_factoring_quote` and pool state from the deployed testnet contracts (IDs in `liquivault-contracts/deployments/testnet.json`).
+## Proposed distribution
 
-## liquivault-frontend
-11. **Quote preview component** (Medium): live discount preview on the merchant page via `preview_factoring_quote`.
-12. **Error and loading states for wallet and transactions** (Trivial): toast on rejection, spinner while pending.
-13. **Dashboard: show pool utilization and default rate** (High): metrics chart from live contract reads (`get_pool_state`, `get_junior_state`, `get_protocol_metrics`).
-14. **Read live tranche balances on the investor page** (Medium): replace mock senior/junior figures with `get_pool_state` / `get_junior_state` from the testnet pool.
+The [published backlog](docs/wave/README.md) provides direct links to the opened issues.
 
-## Docs & tooling (CI item goes to liquivault-contracts)
-15. **[COMPLETED] `SECURITY.md` and threat model** (Medium): see [`docs/SECURITY.md`](docs/SECURITY.md).
-16. **[COMPLETED] Testnet deployment guide** (Medium): see [`docs/deployment.md`](docs/deployment.md) and `liquivault-contracts/scripts/deploy_testnet.sh`.
-17. **Run the deploy smoke test in CI against a local Stellar quickstart node** (High): start `stellar/quickstart` in GitHub Actions, run `deploy_testnet.sh` against it (network made configurable), and fail on any error.
+- Contracts: property-based quote coverage, wire-type compatibility, archival/restoration integration.
+- SDK: typed error mapping, explicit restoration planning, admin-builder and changed-body tests.
+- Frontend: browser wallet-flow tests, refresh/session race handling, redemption eligibility.
+
+These tasks extend the project; they do not defer the security dependency updates or documentation corrections from this maintenance pass. Significant economic changes and production deployment are outside their scope.
+
+## Publish or inspect
+
+```sh
+node scripts/publish-wave-issues.mjs
+node scripts/publish-wave-issues.mjs --publish
+```
+
+The default is a dry run. Publishing uses an existing GitHub credential in memory, checks the authenticated account and deduplicates by a stable marker. It does not install the Drips app, apply a program label, submit an application or create fake contribution activity. If account authorization is unavailable, retain the drafts and authenticate through the normal GitHub flow.
+
+## Drips submission
+
+Follow the [official maintainer guide](https://docs.drips.network/wave/maintainers/participating-in-a-wave/). Install/sync the GitHub app, select relevant code repositories, apply and wait for organizer approval. Use the actual program workflow/label only after approval. Repository application limits and appeal rules are set by Drips; a local `help wanted` label does not imply acceptance.
+
+Prioritize contracts first, then SDK; submit the frontend when its contributor workflow is independently verified. Review applications and PRs promptly during the Wave. No minimum star count or invented user traction is claimed.

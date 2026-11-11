@@ -9,12 +9,20 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
 jobs:
   links:
     name: Check Markdown links
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check documentation structure and encoding
+        run: node scripts/check-docs.mjs
       - uses: lycheeverse/lychee-action@v2
         with:
           args: --no-progress --exclude 'stellar\.expert' --exclude 'localhost' './**/*.md'

@@ -1,123 +1,55 @@
-# Contributing to LiquiVault
+# Contributing
 
-Thank you for your interest in contributing to LiquiVault! We welcome contributions to smart contracts, the TypeScript SDK, the frontend application, and documentation.
+Choose the repository that owns the change: [contracts](https://github.com/MoscowDev/liquivault-contracts), [SDK](https://github.com/MoscowDev/liquivault-sdk), [frontend](https://github.com/MoscowDev/liquivault-frontend), or this documentation repository. Each repository has a contribution guide and CI workflow.
 
----
+## Setup
 
-## 1. Repositories
+Use Node.js 22.13+ and npm. The frontend depends on the sibling SDK; build/install the SDK first. Contract development requires Rust with the `wasm32v1-none` target. Stellar CLI is only needed for deployment or signed network demonstrations.
 
-LiquiVault is split into three code repositories plus this overview repository. Open issues and pull requests in the repository that owns the code you are changing.
-
-| Repository | Scope | Language / Framework | Primary Commands |
-| :--- | :--- | :--- | :--- |
-| [`liquivault-contracts/`](https://github.com/MoscowDev/liquivault-contracts) | Soroban Core Smart Contracts | Rust (`#![no_std]`), `soroban-sdk = "21.7.7"` | `cargo test --workspace`<br/>`./scripts/deploy_testnet.sh` |
-| [`liquivault-sdk/`](https://github.com/MoscowDev/liquivault-sdk) | Client SDK & Transaction Builders | TypeScript, Vitest, Tsup | `npm install`<br/>`npm test`<br/>`npm run build` |
-| [`liquivault-frontend/`](https://github.com/MoscowDev/liquivault-frontend) | Web Application & Telemetry Portal | Next.js 14, Tailwind, shadcn/ui | `npm install`<br/>`npm test`<br/>`npm run dev` |
-| [`docs/`](./docs) (this repo) | Protocol Specifications & Evidence | Markdown | Documentation source |
-
----
-
-## 2. Development Setup & Prerequisites
-
-Before submitting contributions, ensure your environment matches the tested scope:
-
-- **Rust**: `1.84+` with target `wasm32v1-none`
-  ```bash
-  rustup target add wasm32v1-none
-  ```
-- **Stellar CLI**: `21.7.0+`
-  ```bash
-  cargo install --locked stellar-cli --features opt
-  ```
-- **Node.js**: `v20.x` or `v22.x` (LTS)
-- **Git**: Configured with a clean working tree
-
----
-
-## 3. Workflow & Contribution Process
-
-### 3.1 Branching Strategy
-1. Fork the repository and create your feature or bugfix branch from `main`:
-   ```bash
-   git checkout -b feature/your-feature-name
-   # or
-   git checkout -b fix/issue-description
-   ```
-2. Keep branches focused on a single logical change. Avoid monolithic PRs mixing contract changes, SDK updates, and UI refactors unless directly dependent.
-
-### 3.2 Commit Conventions
-We enforce [Conventional Commits](https://www.conventionalcommits.org/):
-- `feat(contracts): add junior tranche withdrawal limit guard`
-- `fix(sdk): serialize RFC-6902 metadata keys in strict lexicographical order`
-- `docs(storage): document TTL bump constants and restore procedures`
-- `test(frontend): assert JuniorTrancheCard renders APY and coverage ratio`
-
----
-
-## 4. Verification Standards
-
-Every Pull Request must pass the CI of the repository it targets. Changes that span repositories (for example new contract IDs) need a PR in each.
-
-### 4.1 Smart Contracts
-```bash
-git clone https://github.com/MoscowDev/liquivault-contracts.git
-cd liquivault-contracts
-# Run workspace test suite
-cargo test --workspace
-
-# Check formatting and linter
-cargo fmt --all -- --check
-cargo clippy --all-targets -- -D warnings
-
-# Build WASM binaries (crates are rlib, so request cdylib explicitly)
-for c in invoice_registry liquidity_pool factoring_escrow; do
-  cargo rustc -p $c --crate-type cdylib --target wasm32v1-none --release
-done
-```
-- Smart contracts must maintain `#![no_std]`.
-- All financial arithmetic must use `checked_*` methods (`checked_add`, `checked_mul`, etc.).
-- Never use `unwrap()` or `expect()` in production contract code; return typed errors (`EscrowError`, `RegistryError`, `PoolError`).
-- Invariants must be protected by Checks-Effects-Interactions (CEI).
-
-### 4.2 TypeScript SDK
-```bash
+```sh
 git clone https://github.com/MoscowDev/liquivault-sdk.git
-cd liquivault-sdk
-npm install
-npm test
-npm run build
-```
-- Dual ESM and CJS bundle output must compile cleanly via `tsup`.
-- SDK must strictly type all contract arguments, return values, and error mappings.
-
-### 4.3 Web Frontend
-```bash
 git clone https://github.com/MoscowDev/liquivault-frontend.git
-cd liquivault-frontend
-npm install
+cd liquivault-sdk
+npm ci
+npm run typecheck
+npm test
+npm run build
+cd ../liquivault-frontend
+npm ci
+npm run lint
 npm test
 npm run build
 ```
-- All React components must pass Vitest and React Testing Library suites.
-- TypeScript compiler checks (`tsc --noEmit`) must succeed with zero errors.
 
----
+For contracts, clone the contracts repository and use its exact CI commands. A normal `cargo build` produces rlibs: deployment requires the documented `cargo rustc --crate-type cdylib` commands.
 
-## 5. Security & Invariant Rules
+## Working on an issue
 
-If you are modifying smart contract logic, consult [SECURITY.md](docs/SECURITY.md) and [architecture.md](docs/architecture.md):
-- **Finding F-1 Invariant**: Invoices can NEVER be verified by merchants or debtors. Only the authorized Verifier Oracle or Admin can verify.
-- **Finding F-2 Invariant**: Circuit breakers (`set_paused`) must be respected during state-mutating actions (mints, deposits, advances), but repayments must remain unblocked.
-- **Finding F-3 Invariant**: Junior withdrawals must strictly enforce the 10% deployed capital coverage rule.
-- **TTL Extension**: All persistent reads and writes must execute `extend_ttl` using the constants in [storage.md](docs/storage.md).
+Read the issue and affected code before requesting assignment. Describe a bounded approach and disclose dependencies. Do not request work that is already complete or fabricate activity. Follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
----
+Create a branch, keep the change focused, and include:
 
-## 6. Pull Request Checklist
+- The problem and resulting behavior.
+- Meaningful verification, including failures or checks you could not run.
+- Documentation changes for changed APIs, arithmetic or operational assumptions.
+- A reference to the issue being resolved.
 
-Before opening your Pull Request, ensure:
-- [ ] Comprehensive unit tests cover new functionality or edge cases.
-- [ ] The target repository's test suite passes (contracts: `cargo test --workspace`; SDK and frontend: `npm test`).
-- [ ] All new files contain clean formatting and adhere to repository linting standards.
-- [ ] Documentation has been updated to reflect any state, parameter, or interface changes.
-- [ ] Pull request template is filled out completely.
+Never commit secret keys, wallet seeds, auth tokens, `.env.local`, or local Stellar configuration. Public contract IDs, public keys and transaction hashes are appropriate deployment evidence.
+
+## Review
+
+Maintainers review correctness, security, test quality and contributor clarity. Passing CI is necessary but does not establish security. Contract changes should cover authorization, arithmetic boundaries and cross-contract consistency. If AI tools helped, understand and verify the resulting work; do not submit untested generated changes.
+
+Security-sensitive findings belong in private reports under the [security policy](docs/SECURITY.md), not public issue bodies. For non-sensitive work, use the repository's issue template with clear acceptance criteria.
+
+## Documentation checks
+
+```sh
+node scripts/check-docs.mjs
+```
+
+This checks relative Markdown links and text integrity in this repository. CI also checks external links. Keep historical evidence explicitly dated and separate from current source verification. Do not describe testnet tokens as Circle USDC or on-chain records as legally enforceable assignments.
+
+## Drips Wave
+
+[WAVE_ISSUES.md](WAVE_ISSUES.md) records the backlog's publication state. Participation follows the [official maintainer process](https://docs.drips.network/wave/maintainers/participating-in-a-wave/). A local label does not establish acceptance or reward eligibility. Maintainers should publish scoped issues, check applications during a Wave, and review submissions promptly. No response-time or approval guarantee is made here.

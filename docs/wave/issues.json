@@ -1,0 +1,83 @@
+[
+  {
+    "repository": "MoscowDev/liquivault-contracts",
+    "key": "quote-properties",
+    "title": "Property-test quote arithmetic and configuration boundaries",
+    "body": "<!-- liquivault-backlog:quote-properties -->\n\n## Context\n\nQuotes handle selected examples, but there is no generated-input suite that exercises rounding, overflow boundaries and validated rate configurations.\n\n## Scope\n\n`contracts/factoring_escrow/src/lib.rs and src/test.rs`\n\n## Suggested complexity\n\nHigh; final Wave complexity is set by maintainers in the Drips app.\n\n## Acceptance criteria\n\n- [ ] Generate reproducible inputs across risk tiers, positive face values, durations and valid rate configurations.\n- [ ] Assert net_payout + total_discount == face_value and separately floored fee/time arithmetic.\n- [ ] Test monotonic discount versus duration/rate, expired maturity, invalid rates and overflow outcomes without panics.\n- [ ] Document the seed/reproduction command; keep normal tests deterministic.\n\n## Verification\n\n`cargo test -p factoring_escrow --locked`\n\n## Participation\n\nThis is genuine unfinished backlog work. It is not assigned to a Drips Wave and does not establish reward eligibility. Read CONTRIBUTING.md, discuss scope and request assignment before starting. Do not use production keys or publish exploit details.\n",
+    "labels": [
+      "help wanted"
+    ]
+  },
+  {
+    "repository": "MoscowDev/liquivault-contracts",
+    "key": "wire-compatibility",
+    "title": "Guard registry and escrow wire-type compatibility",
+    "body": "<!-- liquivault-backlog:wire-compatibility -->\n\n## Context\n\nEscrow maintains compatible copies of registry wire types. Manual changes can compile locally while breaking cross-contract calls.\n\n## Scope\n\n`contracts/factoring_escrow/src/interfaces.rs and contracts/invoice_registry/src/types.rs`\n\n## Suggested complexity\n\nMedium; final Wave complexity is set by maintainers in the Drips app.\n\n## Acceptance criteria\n\n- [ ] Add a cross-crate integration test or a no-export shared types crate without merging contract WASM exports.\n- [ ] Round-trip all risk/status variants and representative invoice fields through both definitions.\n- [ ] Demonstrate that a field/discriminant mismatch fails verification.\n- [ ] Retain separate deployable cdylib artifacts and existing lifecycle tests.\n\n## Verification\n\n`cargo test --workspace --locked and CI WASM builds`\n\n## Participation\n\nThis is genuine unfinished backlog work. It is not assigned to a Drips Wave and does not establish reward eligibility. Read CONTRIBUTING.md, discuss scope and request assignment before starting. Do not use production keys or publish exploit details.\n",
+    "labels": [
+      "help wanted"
+    ]
+  },
+  {
+    "repository": "MoscowDev/liquivault-contracts",
+    "key": "archival-recovery",
+    "title": "Add a reproducible archival and restoration integration harness",
+    "body": "<!-- liquivault-backlog:archival-recovery -->\n\n## Context\n\nTTL helpers exist, but simulation does not renew rent and no automated restoration integration test is shipped.\n\n## Scope\n\n`Contract TTL helpers and scripts/`\n\n## Suggested complexity\n\nHigh; final Wave complexity is set by maintainers in the Drips app.\n\n## Acceptance criteria\n\n- [ ] Use an isolated local network or controlled integration harness; do not use production keys.\n- [ ] Demonstrate instance/persistent archival and identify the exact restoration footprint.\n- [ ] Restore, confirm, rebuild the original transaction and complete a settlement or withdrawal.\n- [ ] Document invocation and failure recovery, including why polling is not rent maintenance.\n\n## Verification\n\n`Documented opt-in integration command plus cargo test --workspace --locked`\n\n## Participation\n\nThis is genuine unfinished backlog work. It is not assigned to a Drips Wave and does not establish reward eligibility. Read CONTRIBUTING.md, discuss scope and request assignment before starting. Do not use production keys or publish exploit details.\n",
+    "labels": [
+      "help wanted"
+    ]
+  },
+  {
+    "repository": "MoscowDev/liquivault-sdk",
+    "key": "typed-errors",
+    "title": "Map contract and transaction failures to typed SDK errors",
+    "body": "<!-- liquivault-backlog:typed-errors -->\n\n## Context\n\nCurrent exceptions are descriptive strings, making reliable application handling of simulation, contract, submission and confirmation failures difficult.\n\n## Scope\n\n`src/wallet/rpc.ts and contract clients`\n\n## Suggested complexity\n\nMedium; final Wave complexity is set by maintainers in the Drips app.\n\n## Acceptance criteria\n\n- [ ] Introduce exported typed errors with contract/code or transaction stage when reliably available.\n- [ ] Preserve the submitted hash and an explicit unknown-outcome indication on interrupted confirmation.\n- [ ] Do not classify pending/unknown execution as success or silently retry a write.\n- [ ] Test representative pool, registry, escrow, submission and confirmation errors with real response/XDR shapes.\n\n## Verification\n\n`npm run typecheck && npm test && npm run build`\n\n## Participation\n\nThis is genuine unfinished backlog work. It is not assigned to a Drips Wave and does not establish reward eligibility. Read CONTRIBUTING.md, discuss scope and request assignment before starting. Do not use production keys or publish exploit details.\n",
+    "labels": [
+      "help wanted"
+    ]
+  },
+  {
+    "repository": "MoscowDev/liquivault-sdk",
+    "key": "archival-planning",
+    "title": "Expose an explicit restoration planning API",
+    "body": "<!-- liquivault-backlog:archival-planning -->\n\n## Context\n\nArchived storage can block reads/writes. The SDK has no caller-visible restoration planner that distinguishes required restoration from normal contract execution.\n\n## Scope\n\n`src/wallet/rpc.ts`\n\n## Suggested complexity\n\nHigh; final Wave complexity is set by maintainers in the Drips app.\n\n## Acceptance criteria\n\n- [ ] Expose restoration information without signing, submitting or spending by surprise.\n- [ ] Require an explicit caller decision/sign callback for restoration and rebuild the original call afterwards.\n- [ ] Test restoration-needed, rejected restoration, failed restoration and successful recovery.\n- [ ] Keep footprint/auth data tied to the selected network and document sequence/fee behavior.\n\n## Verification\n\n`npm run typecheck && npm test && an opt-in restoration integration command`\n\n## Participation\n\nThis is genuine unfinished backlog work. It is not assigned to a Drips Wave and does not establish reward eligibility. Read CONTRIBUTING.md, discuss scope and request assignment before starting. Do not use production keys or publish exploit details.\n",
+    "labels": [
+      "help wanted"
+    ]
+  },
+  {
+    "repository": "MoscowDev/liquivault-sdk",
+    "key": "admin-wire-tests",
+    "title": "Verify admin-builder field types and wallet-body protection",
+    "body": "<!-- liquivault-backlog:admin-wire-tests -->\n\n## Context\n\nGeneral wire-type tests exist, but all admin builders and the signer-changed-body rejection need dedicated boundary coverage.\n\n## Scope\n\n`src/builders/transactionBuilder.ts and tests/network.test.ts`\n\n## Suggested complexity\n\nMedium; final Wave complexity is set by maintainers in the Drips app.\n\n## Acceptance criteria\n\n- [ ] Inspect actual operation XDR for pause, junior-yield configuration, admin transfer and rate updates.\n- [ ] Assert symbol map keys, u32 rate fields and u64 grace period, including malformed inputs.\n- [ ] Test that a signer changing destination, arguments, fees or source is rejected before sendTransaction.\n- [ ] Avoid test-only JSON transaction envelopes or invalid placeholder addresses.\n\n## Verification\n\n`npm run typecheck && npm test && npm run build`\n\n## Participation\n\nThis is genuine unfinished backlog work. It is not assigned to a Drips Wave and does not establish reward eligibility. Read CONTRIBUTING.md, discuss scope and request assignment before starting. Do not use production keys or publish exploit details.\n",
+    "labels": [
+      "help wanted"
+    ]
+  },
+  {
+    "repository": "MoscowDev/liquivault-frontend",
+    "key": "wallet-e2e",
+    "title": "Add browser-level wallet rejection and network/account-change tests",
+    "body": "<!-- liquivault-backlog:wallet-e2e -->\n\n## Context\n\nCurrent tests cover several SDK-stubbed UI actions but do not exercise the browser transaction flow with a controlled wallet provider.\n\n## Scope\n\n`context/WalletContext.tsx and browser test setup`\n\n## Suggested complexity\n\nHigh; final Wave complexity is set by maintainers in the Drips app.\n\n## Acceptance criteria\n\n- [ ] Provide an explicitly fake test-only wallet/provider fixture with no production fallback.\n- [ ] Exercise missing wallet, wrong network, account change, rejection and confirmed submission.\n- [ ] Assert no transaction success or balance increase is shown for a rejected or unknown result.\n- [ ] Document what is browser-tested versus live-extension tested; keep default CI deterministic.\n\n## Verification\n\n`npm run lint && npm run typecheck && npm test && the documented browser-test command`\n\n## Participation\n\nThis is genuine unfinished backlog work. It is not assigned to a Drips Wave and does not establish reward eligibility. Read CONTRIBUTING.md, discuss scope and request assignment before starting. Do not use production keys or publish exploit details.\n",
+    "labels": [
+      "help wanted"
+    ]
+  },
+  {
+    "repository": "MoscowDev/liquivault-frontend",
+    "key": "refresh-races",
+    "title": "Prevent stale account snapshots and writes from replacing active-session state",
+    "body": "<!-- liquivault-backlog:refresh-races -->\n\n## Context\n\nBackground refreshes are guarded on effect cleanup, but post-write refresh and session changes need consistent cancellation/generation handling.\n\n## Scope\n\n`context/WalletContext.tsx`\n\n## Suggested complexity\n\nMedium; final Wave complexity is set by maintainers in the Drips app.\n\n## Acceptance criteria\n\n- [ ] Model delayed reads resolving after disconnect or wallet switch.\n- [ ] Ensure old balances, invoices, quotes and notifications cannot replace the new account state.\n- [ ] Prevent overlapping refreshes from regressing a newer snapshot.\n- [ ] Add deterministic delayed-promise tests and preserve confirmed transaction evidence separately from refresh failures.\n\n## Verification\n\n`npm run lint && npm run typecheck && npm test && npm run build`\n\n## Participation\n\nThis is genuine unfinished backlog work. It is not assigned to a Drips Wave and does not establish reward eligibility. Read CONTRIBUTING.md, discuss scope and request assignment before starting. Do not use production keys or publish exploit details.\n",
+    "labels": [
+      "help wanted"
+    ]
+  },
+  {
+    "repository": "MoscowDev/liquivault-frontend",
+    "key": "redemption-eligibility",
+    "title": "Display contract-derived redemption lock and coverage eligibility",
+    "body": "<!-- liquivault-backlog:redemption-eligibility -->\n\n## Context\n\nThe interface describes the 24-hour lock, but it does not expose each position's actual unlock timestamp or distinguish time, idle-liquidity and coverage restrictions.\n\n## Scope\n\n`Investor view, JuniorTrancheCard and position reads`\n\n## Suggested complexity\n\nMedium; final Wave complexity is set by maintainers in the Drips app.\n\n## Acceptance criteria\n\n- [ ] Derive each tranche unlock time from lastDepositTimestamp + 86400.\n- [ ] Explain relocking on top-up and show a specific reason when redemption is blocked.\n- [ ] Keep contract execution authoritative and avoid claiming a preview guarantees withdrawal.\n- [ ] Test exact unlock boundary, insufficient liquidity and insufficient junior coverage with accessible status text.\n\n## Verification\n\n`npm run lint && npm run typecheck && npm test && npm run build`\n\n## Participation\n\nThis is genuine unfinished backlog work. It is not assigned to a Drips Wave and does not establish reward eligibility. Read CONTRIBUTING.md, discuss scope and request assignment before starting. Do not use production keys or publish exploit details.\n",
+    "labels": [
+      "help wanted"
+    ]
+  }
+]

@@ -1,132 +1,48 @@
-# LiquiVault Deployment & Operational Runbook
+# Deployment and smoke-test reproduction
 
-This guide covers deploying, initializing, and smoke-testing LiquiVault on **Stellar Soroban Testnet** with the Stellar CLI.
+The authoritative public record is [contracts/deployments/testnet.json](https://github.com/MoscowDev/liquivault-contracts/blob/main/deployments/testnet.json). It contains network, public contract/account IDs, time, execution output and, for new deployments, source/WASM provenance and transaction hashes. It contains no private keys.
 
----
+The October 2026 deployment predates the tranche/accounting repairs and is retained in the dated historical record. The current record identifies the repaired source/WASM and 19 confirmed setup/lifecycle transactions. Do not reuse the historical addresses to claim the new protections. The historical 10,000-token invoice returned 9,785.6179288 to the merchant; settlement yielded 192.9438641 to LPs and 21.4382071 to treasury. Older prose overstated that yield by ten times; raw integer records are authoritative.
 
-## 0. Live Testnet Deployment
+## Prerequisites
 
-The protocol is deployed on Stellar Testnet. The full record (accounts and smoke-test output) is in [`liquivault-contracts/deployments/testnet.json`](https://github.com/MoscowDev/liquivault-contracts/blob/main/deployments/testnet.json).
+Use Rust with `wasm32v1-none`, Stellar CLI (the locally verified version is 28.1.0), and Node.js 22.13+ for SDK validation. Bash users may use the shell deployment entry point; a portable Node deployment runner is available in the contracts repository.
 
-| Contract | Testnet ID |
-| :--- | :--- |
-| `invoice_registry` | [`CBYTATTI4S32LCK5W2N4P6U64MAGROW5ZH7DOXAO4CIOY2KWDNIDLSQY`](https://stellar.expert/explorer/testnet/contract/CBYTATTI4S32LCK5W2N4P6U64MAGROW5ZH7DOXAO4CIOY2KWDNIDLSQY) |
-| `liquidity_pool` | [`CCRZRIUMDZ67YDHWMPUFO2LZNGKS2QDRPNK23MUVBYMXYHDDQNNDULGR`](https://stellar.expert/explorer/testnet/contract/CCRZRIUMDZ67YDHWMPUFO2LZNGKS2QDRPNK23MUVBYMXYHDDQNNDULGR) |
-| `factoring_escrow` | [`CBQGNTVLNXV2LZ47GTOUK2TQNTNBNWUWSAKXVYHCURAVL7UZENQ7U42C`](https://stellar.expert/explorer/testnet/contract/CBQGNTVLNXV2LZ47GTOUK2TQNTNBNWUWSAKXVYHCURAVL7UZENQ7U42C) |
-| Test USDC (SAC) | [`CCELQDGSNDDQHVDXQM3CXBCR4LOGLVAIKKET4RY72MZP7SKTEOY2RO2K`](https://stellar.expert/explorer/testnet/contract/CCELQDGSNDDQHVDXQM3CXBCR4LOGLVAIKKET4RY72MZP7SKTEOY2RO2K) |
-
-> The USDC token is a **LiquiVault-issued test asset** (`USDC:GDQBC44K...RV2O`) wrapped as a Stellar Asset Contract, so the smoke test can mint balances. It is not Circle USDC.
-
-**Smoke-test result (10,000 USDC invoice, 60 days, Tier B):**
-
-| Step | On-chain result |
-| :--- | :--- |
-| Senior / junior deposits | 50,000 / 20,000 USDC |
-| Factoring quote | 1,643.82 time discount + 500.00 origination fee = 2,143.82 total |
-| Merchant received | 9,785.62 USDC (net of the 2,143.82 discount on 10,000 face value) |
-| Settlement | 214.38 USDC (10%) to treasury; 1,929.44 USDC LP yield |
-| Tranche split | Junior +578.83 (30%), Senior +1,350.61 (70%) |
-| Invoice status | `Settled` (3), owned by the escrow contract |
-
----
-
-## 1. Prerequisites
-
-| Tool | Version used | Check |
-| :--- | :--- | :--- |
-| Rust | 1.84+ (tested on 1.99) | `rustc --version` |
-| WASM target | `wasm32v1-none` | `rustup target add wasm32v1-none` |
-| Stellar CLI | 22+ (tested on 28.1) | `stellar --version` |
-| Node.js | v20 / v22 | `node -v` |
-
----
-
-## 2. One-Command Deploy
-
-```bash
+```sh
+rustup target add wasm32v1-none
 git clone https://github.com/MoscowDev/liquivault-contracts.git
 cd liquivault-contracts
-./scripts/deploy_testnet.sh
-```
-
-The [script](https://github.com/MoscowDev/liquivault-contracts/blob/main/scripts/deploy_testnet.sh) builds the WASM, creates and funds identities (`lv-admin`, `lv-verifier`, `lv-treasury`, `lv-merchant`, `lv-debtor`, `lv-lp`), issues test USDC, deploys and initializes all three contracts, runs the smoke test, and writes `deployments/testnet.json`. Each run creates a fresh deployment.
-
----
-
-## 3. Manual Steps
-
-### 3.1 Build
-
-The crates are declared as `rlib` so host-side unit tests link on every platform, so request `cdylib` explicitly when building WASM:
-
-```bash
+cargo test --workspace --locked
+cargo fmt --all -- --check
+cargo clippy --all-targets --locked -- -A clippy::inconsistent_digit_grouping -A clippy::too_many_arguments -D warnings
 for c in invoice_registry liquidity_pool factoring_escrow; do
-  cargo rustc -p $c --crate-type cdylib --target wasm32v1-none --release
+  cargo rustc -p "$c" --crate-type cdylib --target wasm32v1-none --release --locked
 done
-# -> target/wasm32v1-none/release/{invoice_registry,liquidity_pool,factoring_escrow}.wasm
 ```
 
-`factoring_escrow` calls the other two contracts through declared interfaces (`src/interfaces.rs`) rather than linking their crates, so its WASM only exports its own entrypoints.
+The crates are rlibs for host tests. A plain `cargo build --target wasm32v1-none` does not replace the explicit cdylib build above.
 
-### 3.2 Deploy
+## Signed demonstration
 
-All three contracts take each other's addresses at initialization, so deploy all of them first, then initialize:
+Run the deployment script from a reviewed checkout. It must use **testnet only**, create fresh development identities, fund them with Friendbot, deploy current WASM, initialize all three contracts, issue an explicitly named test asset and execute:
 
-```bash
-REGISTRY=$(stellar contract deploy --wasm target/wasm32v1-none/release/invoice_registry.wasm --source lv-admin --network testnet)
-POOL=$(stellar contract deploy --wasm target/wasm32v1-none/release/liquidity_pool.wasm --source lv-admin --network testnet)
-ESCROW=$(stellar contract deploy --wasm target/wasm32v1-none/release/factoring_escrow.wasm --source lv-admin --network testnet)
-```
+1. Senior/junior deposits.
+2. Merchant mint (`Issued`).
+3. Independent verifier approval (`Verified`).
+4. Merchant factoring (`Factored` and funded advance).
+5. Payer settlement (`Settled`, deployed capital zero).
+6. Exact checks for token balances, protocol fee and capital-capped tranche yield.
 
-### 3.3 Initialize
+The smoke test intentionally does not wait 24 hours or withdraw freshly deposited shares. Host tests cover the withdrawal lock's boundary.
 
-```bash
-stellar contract invoke --id $REGISTRY --source lv-admin --network testnet -- initialize \
-  --admin $ADMIN --verifier $VERIFIER --factoring_escrow $ESCROW
+Never use production identities, disclose generated private keys, or overwrite a historical evidence record after a partial failure. Persist the new public record only after all assertions pass. Record WASM hashes, build-source identity, tool versions, ledger numbers and transaction hashes so reviewers can distinguish a deployment from an offline calculation.
 
-stellar contract invoke --id $POOL --source lv-admin --network testnet -- initialize \
-  --admin $ADMIN --usdc_token $USDC --factoring_escrow $ESCROW \
-  --treasury $TREASURY --reserve_factor_bps 1000
+## Connect clients
 
-stellar contract invoke --id $ESCROW --source lv-admin --network testnet -- initialize \
-  --admin $ADMIN --invoice_registry $REGISTRY --liquidity_pool $POOL --usdc_token $USDC \
-  --rate_config '{"grace_period_seconds":604800,"origination_fee_bps":50,"tier_a_annual_bps":600,"tier_b_annual_bps":1000,"tier_c_annual_bps":1500}'
-```
+Copy the new contract IDs into the SDK integration fixture and frontend `.env.example` defaults using the synchronization tooling. Rebuild the SDK, run its opt-in network test and build the frontend. Set the matching network passphrase in Freighter. The test token is issuer-controlled and is not Circle-issued USDC.
 
-`set_factoring_escrow` exists on the registry and pool for rotating the escrow later; it is not needed for a fresh deployment.
+## Operational boundaries
 
-### 3.4 Smoke Test
+For a development wallet trustline, test-token provisioning and independent invoice verification, see the [manual wallet walkthrough](wallet-demo.md). Never publish issuer keys to make a demo easier.
 
-Amounts use 7 decimals (`100000000000` = 10,000 USDC). `risk_tier`: `0` = A, `1` = B, `2` = C.
-
-```bash
-stellar contract invoke --id $POOL --source lv-lp --network testnet -- deposit --provider $LP --amount 500000000000
-stellar contract invoke --id $POOL --source lv-lp --network testnet -- deposit_junior --provider $LP --amount 200000000000
-
-stellar contract invoke --id $REGISTRY --source lv-merchant --network testnet -- mint_invoice \
-  --merchant $MERCHANT --debtor $DEBTOR --currency $USDC --face_value 100000000000 \
-  --maturity_timestamp $MATURITY --metadata_hash <64-hex-char-sha256> \
-  --invoice_number INV-TESTNET-001 --risk_tier 1
-
-stellar contract invoke --id $REGISTRY --source lv-verifier --network testnet -- verify_invoice \
-  --caller $VERIFIER --invoice_id 1 --risk_tier 1
-
-stellar contract invoke --id $ESCROW --source lv-merchant --network testnet -- factor_invoice \
-  --merchant $MERCHANT --invoice_id 1
-
-stellar contract invoke --id $ESCROW --source lv-debtor --network testnet -- settle_invoice \
-  --payer $DEBTOR --invoice_id 1
-```
-
----
-
-## 4. Connecting Frontend & SDK
-
-`liquivault-frontend/.env.example` is pre-filled with the testnet IDs above:
-
-```bash
-git clone https://github.com/MoscowDev/liquivault-frontend.git
-cd liquivault-frontend
-cp .env.example .env.local
-npm run dev
-```
+Administrators can upgrade only contracts that already expose `upgrade`. The old immutable deployment cannot gain an upgrade entry point retroactively; a fresh deployment is required. Compatible upgrades still require schema review and a separate test plan. This runbook does not certify mainnet, legal enforceability or an audited production environment.

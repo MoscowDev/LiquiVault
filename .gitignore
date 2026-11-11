@@ -10,3 +10,5 @@ dist/
 liquivault-contracts/
 liquivault-sdk/
 liquivault-frontend/
+
+.stellar/
