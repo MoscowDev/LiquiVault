@@ -22,7 +22,7 @@ Administrators can pause, configure bindings/rates and upgrade WASM. Upgrade cod
 
 Use Node.js 22.13+ for the documented JavaScript tooling, a current Rust toolchain with `wasm32v1-none`, and the Stellar CLI version recorded by deployment evidence. Other platforms are not exhaustively certified.
 
-Persistent entries can archive. Read simulations do not maintain their TTL. See [storage](storage.md). The SDK does not provide a complete archival keeper or automatic recovery workflow. Source-account sequences can conflict across concurrent transactions, wallets or tabs.
+Persistent entries can archive. Read simulations do not maintain their TTL. See [storage](storage.md). The SDK relies on official preparation for normal protocol-level automatic restoration; it does not supply a dedicated manual-restoration planner or rent keeper. Source-account sequences can conflict across concurrent transactions, wallets or tabs.
 
 The frontend requires real Freighter and correct network settings. There is no fake connection or demo-balance fallback. It shows snapshots, connected-merchant invoices and session-only activity. APY/default-rate history is unavailable. Transactions can confirm after a polling timeout; inspect their hashes before retrying.
 

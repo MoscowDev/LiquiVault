@@ -19,6 +19,25 @@ The frontend now uses Next.js 16.4.6 / React 19.3.1; both JavaScript repositorie
 
 ## Review the actual evidence
 
+### Recheck on 12 November 2026
+
+The current local source passed 25 contract tests, formatting and clippy; 20 offline SDK tests, type checking, ESM/CJS and declaration builds, and the arithmetic example; and 6 frontend tests, lint, route-type generation/type checking and the production build. Documentation encoding and relative-link checks passed in all four repositories. The public deployment-record validator passed its 19-transaction and exact-accounting checks. This validator checks the recorded evidence; it does not independently re-query every transaction.
+
+The opt-in SDK test also passed against testnet: deployed pool/invoice reads and unsigned mint preparation with resource/auth data. No transaction was signed or submitted. Full npm dependency audits returned zero findings for both JavaScript repositories, including development dependencies. The SDK build required a rerun outside the filesystem sandbox because esbuild could not read a parent directory; that rerun passed, including declarations.
+
+GitHub reported successful CI for these exact committed revisions:
+
+| Repository | Commit | CI run |
+| --- | --- | --- |
+| Contracts | `e68735c25a5d530a5b3f96cb4fcbfa962fb98e17` | [Passed](https://github.com/MoscowDev/liquivault-contracts/actions/runs/43051492988) |
+| SDK | `e4c6a34de4f5c32d38fd5187c6767fcbf3355caf` | [Passed](https://github.com/MoscowDev/liquivault-sdk/actions/runs/43051481524) |
+| Frontend | `92f537c63718a8bb27f76a0a2af85bc3ab338ef4` | [Passed](https://github.com/MoscowDev/liquivault-frontend/actions/runs/43052426908) |
+| Overview | `798e57fb204e84d2b11b2af85ccc461ca0a275cb` | [Passed](https://github.com/MoscowDev/LiquiVault/actions/runs/43053598322) |
+
+The overview and SDK have local documentation/tooling corrections beyond those commits. They clarify Protocol 23+ automatic restoration, retain manual recovery and rent maintenance as backlog work, and add issue-body refresh support. The CI inspector now filters for the exact commit's push CI workflow and fails on Git inspection errors. These edits need to be committed/pushed and checked by CI before representing the public repositories as containing them. The changed SDK restoration issue description is a local draft until explicitly refreshed on GitHub; this recheck did not publish issue edits.
+
+The restoration correction follows the official [Stellar state archival documentation](https://developers.stellar.org/docs/learn/fundamentals/contract-development/storage/state-archival). Interactive Freighter signing and Drips account/application steps remain owner checks below.
+
 - [Contracts CI](https://github.com/MoscowDev/liquivault-contracts/actions/workflows/ci.yml)
 - [SDK CI](https://github.com/MoscowDev/liquivault-sdk/actions/workflows/ci.yml)
 - [Frontend CI](https://github.com/MoscowDev/liquivault-frontend/actions/workflows/ci.yml)

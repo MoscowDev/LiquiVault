@@ -21,6 +21,8 @@ node scripts/publish-wave-issues.mjs
 node scripts/publish-wave-issues.mjs --publish
 ```
 
+After reviewing changed draft descriptions, use `--publish --refresh` to synchronize changed bodies of existing marked issues. Unchanged bodies are left alone.
+
 The default is a dry run. Publishing uses an existing GitHub credential in memory, checks the authenticated account and deduplicates by a stable marker. It does not install the Drips app, apply a program label, submit an application or create fake contribution activity. If account authorization is unavailable, retain the drafts and authenticate through the normal GitHub flow.
 
 ## Drips submission

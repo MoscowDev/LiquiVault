@@ -45,6 +45,9 @@ for (const draft of drafts) {
   const marker = `<!-- liquivault-backlog:${draft.key} -->`;
   let issue = existing.find(item => !item.pull_request && item.body?.includes(marker));
   if (!issue) issue = await api(`/repos/${repository}/issues`, 'POST', { title: draft.title, body: draft.body, labels: draft.labels });
+  else if (process.argv.includes('--refresh') && (issue.body !== draft.body || issue.title !== draft.title)) {
+    issue = await api(`/repos/${repository}/issues/${issue.number}`, 'PATCH', { title: draft.title, body: draft.body });
+  }
   const entry = { repository, key: draft.key, title: draft.title, number: issue.number, url: issue.html_url };
   const index = published.findIndex(item => item.repository === repository && item.key === draft.key);
   if (index >= 0) published[index] = entry; else published.push(entry);
