@@ -21,6 +21,8 @@ That mints 10,000 test tokens using seven decimals. Replace public IDs with your
 
 ## Try the application
 
+The [hosted testnet demo](https://liquivault-testnet-moscowdev.dependablehamster1.chatgpt.site) includes `/setup` instructions and a `/verifier` screen. After inspecting an invoice by ID, connect the configured verifier/admin wallet to approve it; the registry checks that role on-chain. Funding and verifier access are operator-assisted. The hosted demo does not expose an issuer/verifier private key or provide a public token faucet.
+
 Follow the [frontend setup](https://github.com/MoscowDev/liquivault-frontend#readme), copy its environment example and start the server. Connect Freighter. A missing wallet, rejected access or wrong network should show an error and leave the wallet disconnected.
 
 For a small demonstration, change the form's sample amount to 1,000 test tokens, deposit into either tranche and approve the prepared transaction. Wait for a confirmed ledger and refreshed balance. The full position in that tranche is now locked for 24 hours; topping up resets that lock. Do not treat an arithmetic withdrawal preview as authorization.

@@ -1,5 +1,7 @@
 # Wave application draft
 
+Status update: the maintainer reported rejection of all four repositories. This is the original submission draft, not an appeal ready to send. Use the [post-rejection release candidate](RELEASE_CANDIDATE.md) and [independent validation protocol](VALIDATION_PLAN.md) to prepare evidence of subsequent work. Original test counts and backlog descriptions below refer to the earlier submission.
+
 This is factual application material for the maintainer to review and submit through Drips. It is not a submitted application or an approval notice. Check the current [readiness results](READINESS.md) and CI before copying it.
 
 ## Project

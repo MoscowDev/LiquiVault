@@ -9,6 +9,8 @@ This is development evidence for a future appeal, not an approval claim or a com
 - The testnet setup page explains fee funding, the custom LVTEST asset, the lack of a public LVTEST faucet, verifier access and repayment funding. A verifier screen supports invoice inspection and authorized approval.
 - Quote assurance exercises 4,096 reproducible generated configurations across all risk tiers, conservation, separate rounding and monotonicity. Boundary tests cover invalid configuration, expiry, excessive discounts and checked overflow.
 - Registry/escrow serialization tests cover all risk/status combinations and representative fields in both directions.
+- Generated pool-loss checks exercise junior-only, exact-junior and junior-plus-senior defaults and compare recorded assets with token balances.
+- The deployment runner supports an isolated localhost lifecycle with awaited account funding, separate checkpoints and a separate local record; its full 19-transaction lifecycle passed.
 - The SDK provides a read-only preparation planner exposing network/source/sequence, simulated ledger, fee estimate and restoration keys. Manual recovery is reported explicitly; the planner does not sign or submit.
 
 ## Verification and evidence boundaries
@@ -22,9 +24,11 @@ Browser fixtures emulate Freighter's window message bridge and RPC using real XD
 ## Remaining release gates
 
 - Check GitHub CI for final pushed commits; local results above are separate evidence.
-- Run an isolated archival/restoration integration lifecycle. The local Docker daemon was unavailable during initial implementation; no archival recovery success is claimed.
+- Run an isolated archival/restoration integration lifecycle. Docker initially required startup, after which the normal local lifecycle passed. An experimental standalone ledger jump was not ingested by the bundled RPC, so recovery stopped before signing/submission. The prototype was removed; a working continuous-ingestion recovery harness remains unfinished.
 - Complete a real Freighter lifecycle with public hashes, including token funding and authorized verifier approval.
 - Run [independent validation](VALIDATION_PLAN.md), address real feedback and record consented evidence.
 - Revise the contributor backlog to reflect completed acceptance criteria without claiming unfinished integration work is complete.
+
+Local issue drafts now include progress notes distinguishing implemented coverage from incomplete recovery/session stress work. Published issue bodies and open/closed state have not been changed automatically; review the final commits before closing or reassigning them.
 
 Submit an appeal only after meaningful changes and evidence exist beyond the rejected submission. Describe actual results and unresolved work; do not promise approval or invent activity.
