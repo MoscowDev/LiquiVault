@@ -1,5 +1,11 @@
 # Submission readiness
 
+## Post-rejection development
+
+All four submitted repositories were rejected by the Stellar Wave Program according to the maintainer's notification. The notification lists general selection factors; it does not identify a specific technical defect in LiquiVault. No appeal has been submitted by this development pass.
+
+The [release candidate](RELEASE_CANDIDATE.md) records subsequent changes and local verification, including browser coverage, session safety, integer redemption checks, quote/wire/pool assurance and restoration planning. The [public demo](https://liquivault-testnet-moscowdev.dependablehamster1.chatgpt.site) is deployed; a completed live Freighter lifecycle, network archival recovery and [independent validation](VALIDATION_PLAN.md) remain unverified. Historical results below describe the earlier submission pass, not program approval or evidence of outside adoption.
+
 Maintenance verification completed in November 2026. The project has reviewable code, corrected documentation, signed repaired-contract evidence and a genuine contributor backlog for a Drips Wave application. This is not an approval notice, independent security audit or real-fund certification.
 
 ## Verified local results

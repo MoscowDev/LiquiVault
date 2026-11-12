@@ -79,5 +79,7 @@ For contract commands, see the [contract README](https://github.com/MoscowDev/li
 - [Wave backlog and application preparation](WAVE_ISSUES.md)
 - [Factual application draft](docs/WAVE_APPLICATION.md)
 - [Repair history](docs/REPAIR_NOTES.md)
+- [Post-rejection release candidate](docs/RELEASE_CANDIDATE.md)
+- [Independent validation protocol](docs/VALIDATION_PLAN.md)
 
 SEP-10/KYB, SEP-24, historical APY/default-rate analytics and production underwriting infrastructure are not implemented. Test results establish the exercised behavior, not an independent security audit or a guarantee of Drips approval.

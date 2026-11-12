@@ -1,5 +1,7 @@
 # Wave preparation and unfinished backlog
 
+Following rejection, the [release candidate](docs/RELEASE_CANDIDATE.md) implements portions of this backlog. The original published issue descriptions are historical scope, not an assertion that all nine tasks remain untouched. Local descriptions must record the new progress before any future contributor assignment; this pass does not automatically close GitHub issues or send issue comments.
+
 The reviewed issue descriptions are in [docs/wave/issues.json](docs/wave/issues.json). They describe unfinished work rather than completed repair tasks. Each includes code context, bounded acceptance criteria and verification commands. Suggested complexity is advisory; the maintainer sets program complexity after repository approval.
 
 Publication status and actual issue URLs are recorded in [docs/wave/published.json](docs/wave/published.json). Until that file contains a returned GitHub URL, an entry is a prepared draft, not an opened issue. No PR, outside contributor, adoption, approval or reward history is fabricated.
