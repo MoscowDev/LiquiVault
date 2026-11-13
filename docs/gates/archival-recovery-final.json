@@ -1,0 +1,132 @@
+{
+  "before": {
+    "shares": "500000000000",
+    "liveUntilLedgers": [
+      741,
+      760
+    ],
+    "balance": "300000000000"
+  },
+  "targetLedger": 761,
+  "expiredEntryTtls": [
+    0,
+    0
+  ],
+  "archivedBefore": true,
+  "rejectedSigningPreservedArchive": true,
+  "hash": "7945462ab9179fe39adb4ccfc584f8fa02578bf6ec656a57b876e3eab4b4bb74",
+  "status": "confirmed",
+  "ledger": 765,
+  "checkedAt": "2026-11-13T13:01:35.754Z",
+  "network": "standalone",
+  "scope": "instrumented-standalone-only",
+  "protocolVersion": 28,
+  "restorationKeys": [
+    "AAAABgAAAAGPCW26IkCLwa31xEx1X5pbBJxyCZ+PIlPv1LRFuv/DfwAAABAAAAABAAAAAgAAAA8AAAAIUG9zaXRpb24AAAASAAAAAAAAAAC8y8SBNVKh8aXRoew3tOrGzgnS26siq4gMIoXaQ+exGAAAAAE=",
+    "AAAABgAAAAGPCW26IkCLwa31xEx1X5pbBJxyCZ+PIlPv1LRFuv/DfwAAABQAAAAB",
+    "AAAAB4BxK5J+id65vrogHju113YS4q1xRbfid6JCOeuxuwqa"
+  ],
+  "restoredLiveUntilLedgers": [
+    1020,
+    1020
+  ],
+  "withdrawalTokenUnits": "501378205768",
+  "instanceAndPositionRestored": true,
+  "withdrawalCompleted": true,
+  "tokenBalanceDeltaVerified": true,
+  "fixtureManifest": {
+    "schemaVersion": 1,
+    "scope": "instrumented-standalone-only",
+    "baseContractCommit": "2c6e97e7e383684516661ea07f016455f2bb1a8e",
+    "image": "stellar/quickstart@sha256:4c8bad1ef7341205b898f83d9489321da80c7bd74183100fc8e2a39a5938c7d5",
+    "protocolVersion": 28,
+    "settingsTemplateProtocol": 27,
+    "canonicalSourcesModified": false,
+    "patches": [
+      {
+        "contract": "invoice_registry",
+        "constant": "INSTANCE_LIFETIME_THRESHOLD",
+        "original": 17280,
+        "fixture": 32
+      },
+      {
+        "contract": "invoice_registry",
+        "constant": "INSTANCE_BUMP_AMOUNT",
+        "original": 518400,
+        "fixture": 256
+      },
+      {
+        "contract": "invoice_registry",
+        "constant": "PERSISTENT_LIFETIME_THRESHOLD",
+        "original": 34560,
+        "fixture": 32
+      },
+      {
+        "contract": "invoice_registry",
+        "constant": "PERSISTENT_BUMP_AMOUNT",
+        "original": 1036800,
+        "fixture": 256
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "INSTANCE_LIFETIME_THRESHOLD",
+        "original": 17280,
+        "fixture": 32
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "INSTANCE_BUMP_AMOUNT",
+        "original": 518400,
+        "fixture": 256
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "PERSISTENT_LIFETIME_THRESHOLD",
+        "original": 34560,
+        "fixture": 32
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "PERSISTENT_BUMP_AMOUNT",
+        "original": 1036800,
+        "fixture": 256
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "WITHDRAWAL_LOCK_SECONDS",
+        "original": 86400,
+        "fixture": 1
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "INSTANCE_LIFETIME_THRESHOLD",
+        "original": 17280,
+        "fixture": 32
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "INSTANCE_BUMP_AMOUNT",
+        "original": 518400,
+        "fixture": 256
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "PERSISTENT_LIFETIME_THRESHOLD",
+        "original": 34560,
+        "fixture": 32
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "PERSISTENT_BUMP_AMOUNT",
+        "original": 1036800,
+        "fixture": 256
+      }
+    ],
+    "settingsSha256": "5267507e8c4aa943aa775644ce4b5d7d6ca46503967024821f275b413e4e853f"
+  },
+  "fixtureWasmSha256": {
+    "invoiceRegistry": "31872e95e6d32c457b48ad314ba83ba12afe6e1aeb00e7ed1f5dd55cbf51ac7c",
+    "liquidityPool": "80712b927e89deb9beba201e3bb5d77612e2ad7145b7e277a24239ebb1bb0a9a",
+    "factoringEscrow": "502882e8562b20c14d8ce20c39d29af800ce4c784acbc004a27a2d27c2dd3a0c"
+  }
+}

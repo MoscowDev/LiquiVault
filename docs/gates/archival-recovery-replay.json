@@ -1,0 +1,340 @@
+{
+  "before": {
+    "shares": "500000000000",
+    "liveUntilLedgers": [
+      551,
+      564
+    ],
+    "balance": "300000000000"
+  },
+  "targetLedger": 565,
+  "expiredEntryTtls": [
+    0,
+    0
+  ],
+  "archivedBefore": true,
+  "rejectedSigningPreservedArchive": true,
+  "hash": "086190d142328578e7d2502485b6479e770c91aff6740f078541aa7b55c21ad1",
+  "status": "confirmed",
+  "ledger": 567,
+  "checkedAt": "2026-11-12T15:56:33.424Z",
+  "network": "standalone",
+  "scope": "instrumented-standalone-only",
+  "protocolVersion": 28,
+  "restorationKeys": [
+    "AAAABgAAAAHf42tE/rdvqjp9zIPXrjusDzyn4V6NAZpk7JbAoTJQmgAAABAAAAABAAAAAgAAAA8AAAAIUG9zaXRpb24AAAASAAAAAAAAAACwuJj1Y/Is8tq0XD09rGdJ0T0QvYXjhdK3m//VDTUz7QAAAAE=",
+    "AAAABgAAAAHf42tE/rdvqjp9zIPXrjusDzyn4V6NAZpk7JbAoTJQmgAAABQAAAAB",
+    "AAAAB4BxK5J+id65vrogHju113YS4q1xRbfid6JCOeuxuwqa"
+  ],
+  "restoredLiveUntilLedgers": [
+    822,
+    822
+  ],
+  "withdrawalTokenUnits": "501378206380",
+  "instanceAndPositionRestored": true,
+  "withdrawalCompleted": true,
+  "tokenBalanceDeltaVerified": true,
+  "fixtureManifest": {
+    "schemaVersion": 1,
+    "scope": "instrumented-standalone-only",
+    "baseContractCommit": "2c6e97e7e383684516661ea07f016455f2bb1a8e",
+    "image": "stellar/quickstart@sha256:4c8bad1ef7341205b898f83d9489321da80c7bd74183100fc8e2a39a5938c7d5",
+    "protocolVersion": 28,
+    "settingsTemplateProtocol": 27,
+    "canonicalSourcesModified": false,
+    "patches": [
+      {
+        "contract": "invoice_registry",
+        "constant": "INSTANCE_LIFETIME_THRESHOLD",
+        "original": 17280,
+        "fixture": 32
+      },
+      {
+        "contract": "invoice_registry",
+        "constant": "INSTANCE_BUMP_AMOUNT",
+        "original": 518400,
+        "fixture": 256
+      },
+      {
+        "contract": "invoice_registry",
+        "constant": "PERSISTENT_LIFETIME_THRESHOLD",
+        "original": 34560,
+        "fixture": 32
+      },
+      {
+        "contract": "invoice_registry",
+        "constant": "PERSISTENT_BUMP_AMOUNT",
+        "original": 1036800,
+        "fixture": 256
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "INSTANCE_LIFETIME_THRESHOLD",
+        "original": 17280,
+        "fixture": 32
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "INSTANCE_BUMP_AMOUNT",
+        "original": 518400,
+        "fixture": 256
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "PERSISTENT_LIFETIME_THRESHOLD",
+        "original": 34560,
+        "fixture": 32
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "PERSISTENT_BUMP_AMOUNT",
+        "original": 1036800,
+        "fixture": 256
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "WITHDRAWAL_LOCK_SECONDS",
+        "original": 86400,
+        "fixture": 1
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "INSTANCE_LIFETIME_THRESHOLD",
+        "original": 17280,
+        "fixture": 32
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "INSTANCE_BUMP_AMOUNT",
+        "original": 518400,
+        "fixture": 256
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "PERSISTENT_LIFETIME_THRESHOLD",
+        "original": 34560,
+        "fixture": 32
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "PERSISTENT_BUMP_AMOUNT",
+        "original": 1036800,
+        "fixture": 256
+      }
+    ],
+    "settingsSha256": "5267507e8c4aa943aa775644ce4b5d7d6ca46503967024821f275b413e4e853f"
+  },
+  "fixtureWasmSha256": {
+    "invoiceRegistry": "31872e95e6d32c457b48ad314ba83ba12afe6e1aeb00e7ed1f5dd55cbf51ac7c",
+    "liquidityPool": "80712b927e89deb9beba201e3bb5d77612e2ad7145b7e277a24239ebb1bb0a9a",
+    "factoringEscrow": "502882e8562b20c14d8ce20c39d29af800ce4c784acbc004a27a2d27c2dd3a0c"
+  },
+  "scopeNote": "Independent fresh replay of the one-command runner on a local network with documented timing instrumentation. Not independent-person validation.",
+  "seedTransactions": [
+    {
+      "step": "deploy-test-asset",
+      "hash": "d9dcfb605626bd9377ef29293d83e2bb818b119facb2045c345e24c6f4cc8020",
+      "ledger": 273,
+      "source": "GDPKMBPNGZ56ULOHQND3COIYY3VYEXR6IBDCSKOT2E56S4CZZ7MF5ZEV"
+    },
+    {
+      "step": "trust-treasury",
+      "hash": "cbcd9293ba1d0b9ed4e957b54e0f6829ba43ddb527c2a3b5b6c741e758d49322",
+      "ledger": 276,
+      "source": "GDJG2WAXRWQBBYKSYQDKFGFIHOOEGVHFHFD222BLDSADJI4P3ZTR4G7G"
+    },
+    {
+      "step": "trust-merchant",
+      "hash": "fb39f3958f7061b9dde627c1eae4c9a49e0e7839bb11ee31e28a84b56f7a8259",
+      "ledger": 278,
+      "source": "GC5Y7CFTSEVHWID5UKGE337KC26OPPHSJY2KAX3ZLTKPFYK6AOP2AWA5"
+    },
+    {
+      "step": "trust-debtor",
+      "hash": "0d442a7e76a307d76da618d7f4369d7546ec95571e0442f3313c5253a5573713",
+      "ledger": 280,
+      "source": "GA4HPKBBFLBAGNNT4RX3JTMGLNFKQDG3FPEGPSCNLEFGL75GJHIB7D4F"
+    },
+    {
+      "step": "trust-lp",
+      "hash": "2df28137f298c3e3d0fbf5ac7dbf4a65bddcba443ef2818ea429de5129b1f951",
+      "ledger": 282,
+      "source": "GCYLRGHVMPZCZ4W2WROD2PNMM5E5CPIQXWC6HBOSW6N77VINGUZ632DK"
+    },
+    {
+      "step": "mint-lp-tokens",
+      "hash": "214afbc229ffdb6774cb0d87c0f1b2aa5d4c4aec37a1a8e0582038c57d42305d",
+      "ledger": 284,
+      "source": "GDPKMBPNGZ56ULOHQND3COIYY3VYEXR6IBDCSKOT2E56S4CZZ7MF5ZEV"
+    },
+    {
+      "step": "mint-debtor-tokens",
+      "hash": "d2e5b6bc427090c5e690972a81928695e2576c4b11e00bbfbd6f9792b1467b29",
+      "ledger": 287,
+      "source": "GDPKMBPNGZ56ULOHQND3COIYY3VYEXR6IBDCSKOT2E56S4CZZ7MF5ZEV"
+    },
+    {
+      "step": "deploy-invoice_registry",
+      "hash": "ec90d05c3a9fd34ff34914e9c6ef5fc7b670f0523b1b24f69c51bac0bbe0c537",
+      "ledger": 291,
+      "source": "GDPKMBPNGZ56ULOHQND3COIYY3VYEXR6IBDCSKOT2E56S4CZZ7MF5ZEV"
+    },
+    {
+      "step": "deploy-liquidity_pool",
+      "hash": "7e699f3363b4e2a5b3a81acd312b25246309a63a85833463ace67749d888309b",
+      "ledger": 296,
+      "source": "GDPKMBPNGZ56ULOHQND3COIYY3VYEXR6IBDCSKOT2E56S4CZZ7MF5ZEV"
+    },
+    {
+      "step": "deploy-factoring_escrow",
+      "hash": "11d1e4b38369cbb21da309fff445c0d4c5ae11d634a943926a2fdd44cd969136",
+      "ledger": 300,
+      "source": "GDPKMBPNGZ56ULOHQND3COIYY3VYEXR6IBDCSKOT2E56S4CZZ7MF5ZEV"
+    },
+    {
+      "step": "initialize-registry",
+      "hash": "2f770d1be40c89d1151105ad4250aa1a38ff820eaf05a2ecfcbcff246dfd419a",
+      "ledger": 302,
+      "source": "GDPKMBPNGZ56ULOHQND3COIYY3VYEXR6IBDCSKOT2E56S4CZZ7MF5ZEV"
+    },
+    {
+      "step": "initialize-pool",
+      "hash": "9b1e048dcf9be212de74d5e7b6c633eebb11ed0bef2a58c1242e5a2ced58a518",
+      "ledger": 305,
+      "source": "GDPKMBPNGZ56ULOHQND3COIYY3VYEXR6IBDCSKOT2E56S4CZZ7MF5ZEV"
+    },
+    {
+      "step": "initialize-escrow",
+      "hash": "2616bbacb40d2c87b56f57e6d4630db3c49649b1dabf45a6ebe262e6dfe24c67",
+      "ledger": 307,
+      "source": "GDPKMBPNGZ56ULOHQND3COIYY3VYEXR6IBDCSKOT2E56S4CZZ7MF5ZEV"
+    },
+    {
+      "step": "deposit-senior",
+      "hash": "39f2bf04d428ce21a2ffc85868debaf0bf640bd23668658abbff84931b5ab45b",
+      "ledger": 309,
+      "source": "GCYLRGHVMPZCZ4W2WROD2PNMM5E5CPIQXWC6HBOSW6N77VINGUZ632DK"
+    },
+    {
+      "step": "deposit-junior",
+      "hash": "4cbe64f65010c4bdf073cef7fee0afc5a20caae281b0d9a2f61f4376ce088611",
+      "ledger": 312,
+      "source": "GCYLRGHVMPZCZ4W2WROD2PNMM5E5CPIQXWC6HBOSW6N77VINGUZ632DK"
+    },
+    {
+      "step": "mint-invoice",
+      "hash": "36ff6336e4b6c3d4a828e9199a375d6142d9fc858a975eb61d057690fbb910a3",
+      "ledger": 314,
+      "source": "GC5Y7CFTSEVHWID5UKGE337KC26OPPHSJY2KAX3ZLTKPFYK6AOP2AWA5"
+    },
+    {
+      "step": "verify-invoice",
+      "hash": "2977c7dd28de536ac065fd195e98d08dee7281332633270fc1b3358c45758f8e",
+      "ledger": 316,
+      "source": "GCDMXCYGEAMAU47LRTLFSNWNUXTLUM3YJ72ZZ3DCKU5P6H3JNFZZ5BRW"
+    },
+    {
+      "step": "factor-invoice",
+      "hash": "5b309e390713fe70c5f79826fa2c828bf029e0f38b6dd86b964672037c88a898",
+      "ledger": 319,
+      "source": "GC5Y7CFTSEVHWID5UKGE337KC26OPPHSJY2KAX3ZLTKPFYK6AOP2AWA5"
+    },
+    {
+      "step": "settle-invoice",
+      "hash": "1b4d5acda1c6ce95b939370e2ec59817e8834d30e5641f6783fbd46564a822b4",
+      "ledger": 322,
+      "source": "GA4HPKBBFLBAGNNT4RX3JTMGLNFKQDG3FPEGPSCNLEFGL75GJHIB7D4F"
+    }
+  ],
+  "fixtureSourceFiles": [
+    {
+      "path": "Cargo.lock",
+      "sha256": "9e5ab90b236671182cba5f5c6f71b224bd4dfb84f812edf2de20a9b6484fb1e9"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "7034ea9f98ba855750d9e6d703935cf3a30c74804e456a0b8a8953e1049e3a61"
+    },
+    {
+      "path": "contracts/factoring_escrow/Cargo.toml",
+      "sha256": "f27ebeecacfabe5721f1e2711cac2d0588296ae503e25ff50d39c16e955e8ab2"
+    },
+    {
+      "path": "contracts/factoring_escrow/src/assurance.rs",
+      "sha256": "6de934ef31aefb2daf57ac39cb85e2456ec0eb03995ccc429ad684a30e7504b1"
+    },
+    {
+      "path": "contracts/factoring_escrow/src/errors.rs",
+      "sha256": "5f4ff09d0598c41f61a47f674b3618dfb7b737f3fc81533a19962afedb67f604"
+    },
+    {
+      "path": "contracts/factoring_escrow/src/events.rs",
+      "sha256": "eb5017de84727eafaf659023f04a16d39e54f34acceeb590b7d6fab41622d0a6"
+    },
+    {
+      "path": "contracts/factoring_escrow/src/interfaces.rs",
+      "sha256": "2beb85351c0fdce5f495122c09c4806c500abf7d333f771e6437b4a778e7b444"
+    },
+    {
+      "path": "contracts/factoring_escrow/src/lib.rs",
+      "sha256": "d87b3413d2c60ada15f0bc4d363b3171ffec0e83413828eb0809323f9ee83e40"
+    },
+    {
+      "path": "contracts/factoring_escrow/src/test.rs",
+      "sha256": "289e624020edf75425afbbaf1ce573f4d677cfc9fcfdd9630c187f6c64d226d6"
+    },
+    {
+      "path": "contracts/factoring_escrow/src/types.rs",
+      "sha256": "e2c23ab3ea13e099a4de10190c495216d9093db2108fb8abef17bc15b86bcd70"
+    },
+    {
+      "path": "contracts/invoice_registry/Cargo.toml",
+      "sha256": "952cd156f308128b5f1de846735d5b922cb03a312c8edf455fa05579974c911b"
+    },
+    {
+      "path": "contracts/invoice_registry/src/errors.rs",
+      "sha256": "f77a7e863e791e5067aa72e5e8aa461bd5c3eca1df0948830c05657e46400c98"
+    },
+    {
+      "path": "contracts/invoice_registry/src/events.rs",
+      "sha256": "52dbdbd7d1f08d0a986b3492e55398a2ab9afb3f51d541ff7e33c6ebf5cb849e"
+    },
+    {
+      "path": "contracts/invoice_registry/src/lib.rs",
+      "sha256": "2cf55d3c85b8e56d2a998d8b3846cce5f25a8d3635292beacfdc40047c211086"
+    },
+    {
+      "path": "contracts/invoice_registry/src/test.rs",
+      "sha256": "95b4631d9a39bfd4458c891683a967f4ae307a3435bc1412c113ccdacdaa8c66"
+    },
+    {
+      "path": "contracts/invoice_registry/src/types.rs",
+      "sha256": "c3ead324f32a8e8c2b71506d95253b2b1dde73f3f003b53636c15c4a77515afb"
+    },
+    {
+      "path": "contracts/liquidity_pool/Cargo.toml",
+      "sha256": "478e6f8c24eb68c5362d9c3b902b1245f29067c6f3b2518e28fac11670207efd"
+    },
+    {
+      "path": "contracts/liquidity_pool/src/errors.rs",
+      "sha256": "61ffdd908b4cb8d1345b0af8f034084b3b7122b83ae155029e6e1e7f9c018cfc"
+    },
+    {
+      "path": "contracts/liquidity_pool/src/events.rs",
+      "sha256": "e45263468b2e5f6955380ec7bc473e897bca63f982af81a9ff1c012e6c0b63db"
+    },
+    {
+      "path": "contracts/liquidity_pool/src/lib.rs",
+      "sha256": "ab81b46bfc831b463e21f2eef8d99a052dd019805d3f62d7acce4ab60c744a35"
+    },
+    {
+      "path": "contracts/liquidity_pool/src/test.rs",
+      "sha256": "d8492618a44539281024790bbd3c056bcaf9d988805a53de7dc41fd635573a9c"
+    },
+    {
+      "path": "contracts/liquidity_pool/src/types.rs",
+      "sha256": "120465a68c5c46c0035fedf5403f2fe09b99dd6a1ad3f51348f008b36a555f64"
+    }
+  ],
+  "fixtureSourceDigest": "5d7e81688a38d01dfc3898cc7521fc7852fa52a61359a6dabbde9c6faf904286"
+}

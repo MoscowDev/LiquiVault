@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "scope": "LiquiVault maintainer-defined evidence gates; not Drips approval criteria",
+  "archivalEvidence": ["archival-recovery.json", "archival-recovery-replay.json", "archival-recovery-final.json"],
+  "walletEvidence": null,
+  "independentSessions": []
+}

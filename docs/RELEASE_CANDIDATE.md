@@ -24,10 +24,10 @@ Browser fixtures emulate Freighter's window message bridge and RPC using real XD
 ## Remaining release gates
 
 - Check GitHub CI for final pushed commits; local results above are separate evidence.
-- Run an isolated archival/restoration integration lifecycle. Docker initially required startup, after which the normal local lifecycle passed. An experimental standalone ledger jump was not ingested by the bundled RPC, so recovery stopped before signing/submission. The prototype was removed; a working continuous-ingestion recovery harness remains unfinished.
+- Archival/restoration now passes three times on instrumented localhost fixtures with continuous ledger ingestion. [Gate evidence](gates/README.md) records natural expiry, rejected signing, automatic restoration, confirmed withdrawal and exact balance deltas, plus all timing overrides. This supersedes the failed ledger-jump experiment and does not claim production-WASM or public-testnet recovery.
 - Complete a real Freighter lifecycle with public hashes, including token funding and authorized verifier approval.
 - Run [independent validation](VALIDATION_PLAN.md), address real feedback and record consented evidence.
-- Revise the contributor backlog to reflect completed acceptance criteria without claiming unfinished integration work is complete.
+- Contributor backlog descriptions now check implemented acceptance criteria and distinguish automatic localhost recovery from unfinished manual fallback and session stress coverage. See the [current backlog](wave/README.md).
 
 Local issue drafts now include progress notes distinguishing implemented coverage from incomplete recovery/session stress work. Published issue bodies and open/closed state have not been changed automatically; review the final commits before closing or reassigning them.
 

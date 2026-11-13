@@ -23,6 +23,10 @@ jobs:
           node-version: '22'
       - name: Check documentation structure and encoding
         run: node scripts/check-docs.mjs
+      - name: Validate recorded appeal evidence
+        run: node scripts/check-appeal-gates.mjs
+      - name: Test evidence rejection and readiness checks
+        run: node --test scripts/check-appeal-gates.test.mjs
       - uses: lycheeverse/lychee-action@v2
         with:
           args: --no-progress --exclude 'stellar\.expert' --exclude 'localhost' './**/*.md'
