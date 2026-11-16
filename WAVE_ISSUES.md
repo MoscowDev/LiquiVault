@@ -1,5 +1,7 @@
 # Wave preparation and unfinished backlog
 
+16 November 2026 update: all nine public GitHub issue titles/bodies were synchronized with docs/wave/issues.json, including implementation progress and verified-CI references. Open/closed states were left unchanged. Four issues have implemented criteria and must not be assigned as unfinished work; five retain open scope. Earlier descriptions below of local-only progress are historical.
+
 Following rejection, the [release candidate](docs/RELEASE_CANDIDATE.md) implements portions of this backlog. The original published issue descriptions are historical scope, not an assertion that all nine tasks remain untouched. Local descriptions now record implemented criteria and remaining scope before future contributor assignment; GitHub issue bodies and open/closed state are separate and are not automatically changed.
 
 The reviewed issue descriptions are in [docs/wave/issues.json](docs/wave/issues.json). Completed criteria are checked, and the [backlog index](docs/wave/README.md) distinguishes implemented, partial and open scope. Each includes original code context, bounded acceptance criteria and verification commands. Suggested complexity is advisory; the maintainer sets program complexity after repository approval.

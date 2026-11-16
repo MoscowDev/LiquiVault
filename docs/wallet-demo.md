@@ -41,6 +41,8 @@ Wait for the next snapshot, preview the contract quote and factor the verified i
 
 ## Check failure behavior
 
+Record the session using the [session worksheet](SESSION_WORKSHEET.md). Keep it marked incomplete until the official extension actually signs and the network confirms the lifecycle. Record the public wallet address, date, browser/Freighter versions, frontend commit or hosted build provenance, invoice ID, and each transaction hash. Capture separate verifier approval, before/after balances and Issued/Verified/Factored/Settled transitions. Rejection must leave balances unchanged and produce no submitted success transaction. Record actual account/network-switch behavior too. A redemption attempt during the 24-hour lock should explain why it is unavailable; do not claim a completed redemption without waiting and confirming it.
+
 Reject a wallet signature: no success hash or artificial balance change should appear. Switch the wallet account/network: reconnect before continuing. If submission or confirmation is interrupted, inspect the reported hash on testnet before retrying. A transaction may confirm after a client timeout.
 
 The UI lists the connected merchant's invoices and confirmed activity from this session, not a global history. APY/default-rate history and KYB/SEP-10/SEP-24 flows are unavailable. A checklist run is not an independent audit or production certification.

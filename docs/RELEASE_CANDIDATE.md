@@ -1,5 +1,7 @@
 # Testnet release candidate after Wave rejection
 
+16 November 2026 update: exact published CI passed for all four repositories; commits and run URLs are in the [appeal draft](WAVE_APPLICATION.md). All nine public issue descriptions were refreshed to reflect implemented and remaining criteria. Issue states were not changed. Real Freighter and independent-person evidence remain pending; older references below to unrefreshed issue bodies describe the earlier pass.
+
 This is development evidence for a future appeal, not an approval claim or a completed release announcement. The release candidate has no claimed outside users, external audit or completed independent wallet session.
 
 ## Changes
