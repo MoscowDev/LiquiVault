@@ -1,14 +1,6 @@
 ﻿# Stellar Wave appeal preparation
 
-Status, 16 November 2026: draft only; not submitted. All four repositories were previously rejected according to the maintainer notification. Confirm the rejection date and appeal eligibility in the dashboard. Real Freighter lifecycle evidence and independent feedback remain pending.
-
-## Project and Stellar value
-
-LiquiVault is an experimental, pre-audit invoice-factoring prototype on Stellar Soroban. Its registry records commitments and verifier approvals; escrow coordinates advances, repayment and default; a senior/junior pool accounts for yield and losses. Its TypeScript SDK prepares Stellar transactions and its Next.js interface uses Freighter.
-
-Reusable work includes checked integer quotes, atomic cross-contract accounting, wire compatibility tests, transaction preparation/restoration planning and a reproducible archival harness. These are inspectable examples for Stellar developers, not evidence of external adoption.
-
-The project uses issuer-controlled LVTEST on testnet, not Circle USDC. Legal assignment, collection, production underwriting, KYB/SEP-10 and SEP-24 are not implemented. Token funding and verifier approval are operator-assisted.
+Draft updated 18 November 2026. Confirm the rejection date and appeal eligibility for each repository in the Drips dashboard.
 
 ## Substantive changes since rejection
 
@@ -19,35 +11,44 @@ The project uses issuer-controlled LVTEST on testnet, not Circle USDC. Legal ass
 - A read-only SDK planner exposes source/network/sequence, fees and restoration requirements.
 - Three instrumented-localhost archival runs demonstrate natural expiry, rejected signing without restoration, automatic restoration and withdrawal with exact balance deltas. Fixture timing overrides are recorded; production timing and manual fallback are not proven.
 
+- A fresh isolated Stellar Testnet deployment confirmed 19 transactions, including deposits in both tranches and invoice issuance, authorized verification, factoring and settlement. Deployed capital returned to zero. Read-only Testnet simulations returned `WithdrawalLocked` for both tranches. Nine mocked frontend tests passed. [Run report and signed transaction receipt](https://github.com/MoscowDev/LiquiVault/blob/1026335/docs/gates/testnet-terminal-2026-11-18.md)
+
 See [release evidence](RELEASE_CANDIDATE.md), [recovery receipts](gates/README.md) and [known limitations](KNOWN_LIMITATIONS.md).
 
-## Published commits verified on 16 November 2026
+## Project and Stellar value
 
-GitHub push CI passed for all four clean local revisions before this documentation update:
+LiquiVault is an experimental, pre-audit invoice-factoring prototype on Stellar Soroban. Its registry records commitments and verifier approvals, escrow coordinates advances, repayment and default, and a senior/junior pool accounts for yield and losses. Its TypeScript SDK prepares Stellar transactions and its Next.js interface uses Freighter. The project uses issuer-controlled LVTEST on Testnet, with operator-assisted token funding and verifier approval.
+
+## Published commits verified on 18 November 2026
+
+GitHub push CI passed for all four published revisions checked on 18 November 2026.
 
 | Repository | Commit | CI |
 | --- | --- | --- |
 | Contracts | `07de1feef62552607b921e52883bef60ab5b2c61` | [Passed](https://github.com/MoscowDev/liquivault-contracts/actions/runs/43432674742) |
 | SDK | `6d603afd5d2df04146928a9e2c150c6252d2e6b6` | [Passed](https://github.com/MoscowDev/liquivault-sdk/actions/runs/43432660450) |
 | Frontend | `5d03961f65665904497c8be9eb56afbe23f1d6af` | [Passed](https://github.com/MoscowDev/liquivault-frontend/actions/runs/43432685954) |
-| Overview | `f68e656655b7f2ecfc95e2a38d1257992321b6da` | [Passed](https://github.com/MoscowDev/LiquiVault/actions/runs/43432695908) |
+| Overview | `10263353de7a73ff0639feb9792e8a6fe44dfb93` | [Passed](https://github.com/MoscowDev/LiquiVault/actions/runs/44303511026) |
 
 Recheck the final overview revision after publishing these edits. CI does not prove the hosted demo runs the latest frontend revision.
 
 ## Actual contributor work
 
-The [nine published issues](wave/README.md) are historical records, not nine untouched tasks. Four are implemented: quote assurance, wire compatibility, browser wallet coverage and redemption eligibility. Do not reassign their completed criteria.
+The nine public issue bodies were checked on 18 November 2026. All nine were open. Four mark their acceptance criteria complete for quote assurance, wire compatibility, browser wallet coverage and redemption eligibility. The [backlog index](wave/README.md) links each issue and records its implementation status.
 
-Five retain unfinished scope: separate archival recovery in contracts; typed SDK errors; manual SDK recovery; admin-builder and changed-body boundary coverage; and overlapping-refresh/account-switch stress coverage. Restoration and session handling are partial. Agree on remaining criteria before assignment. No issue is claimed as Wave reward eligible.
+Five retain contributor scope covering a separate restore/confirm/rebuild path in contracts, typed SDK errors, manual SDK recovery, admin-builder and changed-body boundary tests, and overlapping-refresh/account-switch stress tests. The corresponding issue descriptions identify the work still available.
+
+## Maintainer availability
+
+Review hours and response times will be confirmed before contributor assignments begin.
 
 ## Remaining steps
 
 1. Complete the [real Freighter walkthrough](wallet-demo.md), recording confirmed hashes and actual rejection behavior.
 2. Obtain consented [independent feedback](VALIDATION_PLAN.md), record attempted steps and blockers, and link fixes or explain unresolved feedback.
-3. Reconcile public issue descriptions with current implementation and verify CI for final published revisions.
-4. State actual maintainer availability to review applications and PRs; no schedule is promised here.
-5. Confirm cooldown and remaining appeal attempts in the Drips dashboard. Submit there only after the package is ready.
+3. Recheck push CI for this documentation revision after publication.
+4. Confirm cooldown and remaining appeal attempts in the Drips dashboard. Submit there only after the package is ready.
 
-The wallet and feedback checks are LiquiVault's own gates, not published mandatory Drips criteria. Run `node scripts/check-appeal-gates.mjs --require-complete`. Fixtures, AI review and maintainer sessions cannot establish independent-person validation.
+LiquiVault tracks the wallet and feedback checks as internal readiness gates. Run `node scripts/check-appeal-gates.mjs --require-complete` once the live wallet receipt and independent feedback have been recorded.
 
 The [official maintainer guide](https://docs.drips.network/wave/maintainers/participating-in-a-wave/) requires substantive changes for appeals. Selection remains discretionary under the [terms](https://docs.drips.network/wave/terms-and-rules/).
