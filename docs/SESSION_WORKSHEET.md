@@ -4,6 +4,8 @@ Status: blank preparation material, not completed evidence. Copy into private no
 
 ## Real Freighter session
 
+See the [18 November terminal evidence](gates/testnet-terminal-2026-11-18.md) for the signed CLI lifecycle, redemption-lock simulations and mocked frontend results. Use this worksheet to capture the separate live browser observations.
+
 - Date/time and operator:
 - Testnet public G-address (never a secret):
 - Browser and official Freighter versions:

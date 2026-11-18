@@ -17,6 +17,8 @@ This is development evidence for a future appeal, not an approval claim or a com
 
 ## Verification and evidence boundaries
 
+18 November 2026: a fresh isolated Testnet CLI lifecycle confirmed 19 transactions, both tranche withdrawals returned `WithdrawalLocked` in Testnet simulations, and nine mocked frontend tests passed. The [run report and transaction evidence](gates/testnet-terminal-2026-11-18.md) record the results and outstanding live Freighter checks.
+
 Local verification passed 29 contract host tests, 24 SDK offline tests, 12 frontend component/unit tests and 8 Chromium browser scenarios. SDK type checking and ESM/CJS/declaration builds passed; frontend lint, type checking and static production export passed. Full npm dependency audits returned zero findings in both JavaScript repositories after the browser dependency was added.
 
 The [public testnet demo](https://liquivault-testnet-moscowdev.dependablehamster1.chatgpt.site) was deployed successfully through Sites from frontend commit `683220de5b4d53ab1926f53ec13d66102484886a`. Its source includes the setup and verifier pages. LVTEST funding remains operator-assisted, not an implemented public faucet.
