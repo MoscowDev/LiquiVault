@@ -261,12 +261,12 @@
             {
               "id": "liquivault-sdk-4-1",
               "acceptance": "Assert pause and junior-yield operation fields",
-              "status": "planned"
+              "status": "completed"
             },
             {
               "id": "liquivault-sdk-4-2",
               "acceptance": "Cover admin transfer and rate configuration types",
-              "status": "planned"
+              "status": "completed"
             }
           ]
         },
@@ -279,12 +279,12 @@
             {
               "id": "liquivault-sdk-5-1",
               "acceptance": "Add changed-arguments and changed-source tests",
-              "status": "planned"
+              "status": "completed"
             },
             {
               "id": "liquivault-sdk-5-2",
               "acceptance": "Add changed-fee and destination tests",
-              "status": "planned"
+              "status": "completed"
             }
           ]
         },
@@ -320,7 +320,7 @@
             {
               "id": "liquivault-sdk-7-2",
               "acceptance": "Cover rejection and failed recovery",
-              "status": "planned"
+              "status": "completed"
             }
           ]
         },
@@ -435,12 +435,12 @@
             {
               "id": "liquivault-frontend-3-1",
               "acceptance": "Evaluate a pinned SDK artifact or package strategy",
-              "status": "planned"
+              "status": "completed"
             },
             {
               "id": "liquivault-frontend-3-2",
               "acceptance": "Verify clean install and build from documented prerequisites",
-              "status": "planned"
+              "status": "completed"
             }
           ]
         },
@@ -591,7 +591,7 @@
             {
               "id": "liquivault-1-2",
               "acceptance": "Validate public evidence links and pending gates",
-              "status": "planned"
+              "status": "completed"
             }
           ]
         },

@@ -1,0 +1,134 @@
+{
+  "before": {
+    "shares": "500000000000",
+    "liveUntilLedgers": [
+      636,
+      651
+    ],
+    "balance": "300000000000"
+  },
+  "targetLedger": 652,
+  "expiredEntryTtls": [
+    0,
+    0
+  ],
+  "archivedBefore": true,
+  "rejectedSigningPreservedArchive": true,
+  "restoreHash": "02e06c487adedc40414b114cc8fd8b1135c9e86271fe91e28a7518698ddb47ab",
+  "status": "confirmed",
+  "restoreLedger": 654,
+  "hash": "7c4993b24b9524cfb422900926631513771b8257f97f1d52e2476c5423804dbd",
+  "ledger": 656,
+  "checkedAt": "2026-11-19T13:18:28.115Z",
+  "network": "standalone",
+  "scope": "instrumented-standalone-only",
+  "protocolVersion": 28,
+  "restorationKeys": [
+    "AAAABgAAAAHyBBbYXRfjxTjPV9/f8xrT0rKfa3bnnki3GumtzCubCwAAABAAAAABAAAAAgAAAA8AAAAIUG9zaXRpb24AAAASAAAAAAAAAADCWV5RApJPYnKGfQAErBtKz307h6HM9y3ooB9KZjnFCwAAAAE=",
+    "AAAABgAAAAHyBBbYXRfjxTjPV9/f8xrT0rKfa3bnnki3GumtzCubCwAAABQAAAAB",
+    "AAAAB4BxK5J+id65vrogHju113YS4q1xRbfid6JCOeuxuwqa"
+  ],
+  "restoredLiveUntilLedgers": [
+    909,
+    909
+  ],
+  "withdrawalTokenUnits": "501378206176",
+  "instanceAndPositionRestored": true,
+  "withdrawalCompleted": true,
+  "tokenBalanceDeltaVerified": true,
+  "fixtureManifest": {
+    "schemaVersion": 1,
+    "scope": "instrumented-standalone-only",
+    "baseContractCommit": "07de1feef62552607b921e52883bef60ab5b2c61",
+    "image": "stellar/quickstart@sha256:4c8bad1ef7341205b898f83d9489321da80c7bd74183100fc8e2a39a5938c7d5",
+    "protocolVersion": 28,
+    "settingsTemplateProtocol": 27,
+    "canonicalSourcesModified": false,
+    "patches": [
+      {
+        "contract": "invoice_registry",
+        "constant": "INSTANCE_LIFETIME_THRESHOLD",
+        "original": 17280,
+        "fixture": 32
+      },
+      {
+        "contract": "invoice_registry",
+        "constant": "INSTANCE_BUMP_AMOUNT",
+        "original": 518400,
+        "fixture": 256
+      },
+      {
+        "contract": "invoice_registry",
+        "constant": "PERSISTENT_LIFETIME_THRESHOLD",
+        "original": 34560,
+        "fixture": 32
+      },
+      {
+        "contract": "invoice_registry",
+        "constant": "PERSISTENT_BUMP_AMOUNT",
+        "original": 1036800,
+        "fixture": 256
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "INSTANCE_LIFETIME_THRESHOLD",
+        "original": 17280,
+        "fixture": 32
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "INSTANCE_BUMP_AMOUNT",
+        "original": 518400,
+        "fixture": 256
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "PERSISTENT_LIFETIME_THRESHOLD",
+        "original": 34560,
+        "fixture": 32
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "PERSISTENT_BUMP_AMOUNT",
+        "original": 1036800,
+        "fixture": 256
+      },
+      {
+        "contract": "liquidity_pool",
+        "constant": "WITHDRAWAL_LOCK_SECONDS",
+        "original": 86400,
+        "fixture": 1
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "INSTANCE_LIFETIME_THRESHOLD",
+        "original": 17280,
+        "fixture": 32
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "INSTANCE_BUMP_AMOUNT",
+        "original": 518400,
+        "fixture": 256
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "PERSISTENT_LIFETIME_THRESHOLD",
+        "original": 34560,
+        "fixture": 32
+      },
+      {
+        "contract": "factoring_escrow",
+        "constant": "PERSISTENT_BUMP_AMOUNT",
+        "original": 1036800,
+        "fixture": 256
+      }
+    ],
+    "settingsSha256": "5267507e8c4aa943aa775644ce4b5d7d6ca46503967024821f275b413e4e853f"
+  },
+  "fixtureWasmSha256": {
+    "invoiceRegistry": "31872e95e6d32c457b48ad314ba83ba12afe6e1aeb00e7ed1f5dd55cbf51ac7c",
+    "liquidityPool": "80712b927e89deb9beba201e3bb5d77612e2ad7145b7e277a24239ebb1bb0a9a",
+    "factoringEscrow": "502882e8562b20c14d8ce20c39d29af800ce4c784acbc004a27a2d27c2dd3a0c"
+  }
+}

@@ -21,7 +21,7 @@ Each code repository has its own CI and contribution guide. File implementation 
 | --- | --- | --- |
 | Contracts | [Build and run the contract tests](https://github.com/MoscowDev/liquivault-contracts#readme) | [Contracts checks](https://github.com/MoscowDev/liquivault-contracts/actions/workflows/ci.yml) |
 | SDK | [Install and run the SDK tests](https://github.com/MoscowDev/liquivault-sdk#readme) | [SDK checks](https://github.com/MoscowDev/liquivault-sdk/actions/workflows/ci.yml) |
-| Frontend | [Set up the app with the sibling SDK checkout](https://github.com/MoscowDev/liquivault-frontend#readme) | [Frontend checks](https://github.com/MoscowDev/liquivault-frontend/actions/workflows/ci.yml) |
+| Frontend | [Set up the app](https://github.com/MoscowDev/liquivault-frontend#readme) | [Frontend checks](https://github.com/MoscowDev/liquivault-frontend/actions/workflows/ci.yml) |
 
 Review the [signed Testnet lifecycle and browser evidence status](docs/gates/testnet-terminal-2026-11-18.md) and the [remaining contributor work](docs/wave/README.md).
 
@@ -57,14 +57,11 @@ With a 100,000-token invoice, 73-day duration, 1,000 annual bps and 50 originati
 
 ## Run locally
 
-Use Node.js 22.13+ for JavaScript tooling, Rust with `wasm32v1-none` for contracts, and Stellar CLI for deployment. Clone SDK and frontend as siblings:
+Use Node.js 22.13+ for JavaScript tooling, Rust with `wasm32v1-none` for contracts, and Stellar CLI for deployment. Install the frontend from its own checkout:
 
 ```sh
-git clone https://github.com/MoscowDev/liquivault-sdk.git
 git clone https://github.com/MoscowDev/liquivault-frontend.git
-cd liquivault-sdk
-npm ci
-cd ../liquivault-frontend
+cd liquivault-frontend
 npm ci
 cp .env.example .env.local
 npm run dev
