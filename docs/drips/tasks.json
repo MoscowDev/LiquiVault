@@ -1,0 +1,763 @@
+{
+  "schemaVersion": 1,
+  "projects": [
+    {
+      "repository": "liquivault-contracts",
+      "baselineChecks": "cargo test --workspace --locked",
+      "sprintCommitTarget": 50,
+      "days": [
+        {
+          "day": 1,
+          "milestone": "Baseline and contributor setup",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-1-1",
+              "acceptance": "Run locked host and WASM checks",
+              "status": "completed"
+            },
+            {
+              "id": "liquivault-contracts-1-2",
+              "acceptance": "Document clean-clone prerequisites and capture an isolated execution receipt",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "milestone": "Lifecycle evidence",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-2-1",
+              "acceptance": "Make lifecycle receipt inputs explicit",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-contracts-2-2",
+              "acceptance": "Validate ledger, hash, and contract provenance",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "milestone": "Recovery boundaries",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-3-1",
+              "acceptance": "Select a legitimate separate restore path",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-contracts-3-2",
+              "acceptance": "Capture archived entries and expected recovery footprint",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "milestone": "Separate restore",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-4-1",
+              "acceptance": "Build the restore transaction in an isolated fixture",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-contracts-4-2",
+              "acceptance": "Confirm restoration before rebuilding the original call",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "milestone": "Recovery failures",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-5-1",
+              "acceptance": "Cover rejected authorization and failed restoration",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-contracts-5-2",
+              "acceptance": "Verify rollback and document retry behavior",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "milestone": "Rebuilt withdrawal",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-6-1",
+              "acceptance": "Exercise rebuilt withdrawal",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-contracts-6-2",
+              "acceptance": "Assert exact balance and share deltas",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "milestone": "Accounting regressions",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-7-1",
+              "acceptance": "Add junior and senior first-loss boundary cases",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-contracts-7-2",
+              "acceptance": "Cross-check assets and token balances",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "milestone": "Cross-contract behavior",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-8-1",
+              "acceptance": "Cover invalid lifecycle transitions",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-contracts-8-2",
+              "acceptance": "Check rollback and role enforcement across contract calls",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "milestone": "Reproducibility",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-9-1",
+              "acceptance": "Repeat the recovery fixture from clean state",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-contracts-9-2",
+              "acceptance": "Check Windows and Linux setup and artifact output",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "milestone": "Release evidence",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-contracts-10-1",
+              "acceptance": "Run full CI and opt-in integration",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-contracts-10-2",
+              "acceptance": "Reconcile completed and remaining public issue criteria",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "liquivault-sdk",
+      "baselineChecks": "npm run typecheck && npm test && npm run build",
+      "sprintCommitTarget": 50,
+      "days": [
+        {
+          "day": 1,
+          "milestone": "Typed errors baseline",
+          "commitTarget": 5,
+          "commits": [
+            {
+              "sha": "9e8aa0e",
+              "checks": "Type checking, 26 passing SDK tests, and ESM/CJS/declaration build. One opt-in test skipped."
+            }
+          ],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-1-1",
+              "acceptance": "Inventory RPC failure stages",
+              "status": "completed"
+            },
+            {
+              "id": "liquivault-sdk-1-2",
+              "acceptance": "Add typed simulation and confirmation error tests",
+              "status": "completed"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "milestone": "Simulation and contract errors",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-2-1",
+              "acceptance": "Map available contract codes",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-sdk-2-2",
+              "acceptance": "Preserve underlying error details",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "milestone": "Submission outcomes",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-3-1",
+              "acceptance": "Preserve submitted hashes through timeouts",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-sdk-3-2",
+              "acceptance": "Cover pending and unknown outcomes without automatic submission retries",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "milestone": "Admin XDR",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-4-1",
+              "acceptance": "Assert pause and junior-yield operation fields",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-sdk-4-2",
+              "acceptance": "Cover admin transfer and rate configuration types",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "milestone": "Wallet integrity",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-5-1",
+              "acceptance": "Add changed-arguments and changed-source tests",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-sdk-5-2",
+              "acceptance": "Add changed-fee and destination tests",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "milestone": "Manual restoration preparation",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-6-1",
+              "acceptance": "Expose caller-authorized restore preparation",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-sdk-6-2",
+              "acceptance": "Validate network, affected keys and fees",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "milestone": "Restore confirmation",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-7-1",
+              "acceptance": "Implement explicit confirmation and rebuild",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-sdk-7-2",
+              "acceptance": "Cover rejection and failed recovery",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "milestone": "Integration",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-8-1",
+              "acceptance": "Exercise the manual path on a controlled fixture",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-sdk-8-2",
+              "acceptance": "Validate failure and recovery evidence",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "milestone": "Standalone packaging",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-9-1",
+              "acceptance": "Verify packed ESM and CommonJS imports",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-sdk-9-2",
+              "acceptance": "Check declarations in a clean consumer project",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "milestone": "Release evidence",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-sdk-10-1",
+              "acceptance": "Run offline and opt-in integration suites",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-sdk-10-2",
+              "acceptance": "Document migration guidance and reconcile issue criteria",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "liquivault-frontend",
+      "baselineChecks": "npm run lint && npm run typecheck && npm test && npm run test:browser && npm run build",
+      "sprintCommitTarget": 50,
+      "days": [
+        {
+          "day": 1,
+          "milestone": "Wallet race baseline",
+          "commitTarget": 5,
+          "commits": [
+            {
+              "sha": "25d4a37",
+              "checks": "Lint, type checking, 13 unit/component tests, eight fixture-based browser tests, and production build passed."
+            }
+          ],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-1-1",
+              "acceptance": "Add deterministic overlapping-refresh tests",
+              "status": "completed"
+            },
+            {
+              "id": "liquivault-frontend-1-2",
+              "acceptance": "Add account-switch and old-write completion tests",
+              "status": "completed"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "milestone": "Session correctness",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-2-1",
+              "acceptance": "Guard balance and invoice state on account changes",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-frontend-2-2",
+              "acceptance": "Keep confirmed activity scoped to its originating session",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "milestone": "Reproducible dependency setup",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-3-1",
+              "acceptance": "Evaluate a pinned SDK artifact or package strategy",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-frontend-3-2",
+              "acceptance": "Verify clean install and build from documented prerequisites",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "milestone": "Setup and funding UX",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-4-1",
+              "acceptance": "Clarify Testnet wallet and LVTEST issuer requirements",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-frontend-4-2",
+              "acceptance": "Show actionable funding and verifier blockers",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "milestone": "Redemption display",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-5-1",
+              "acceptance": "Cover lock, pause and coverage reasons in browser",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-frontend-5-2",
+              "acceptance": "Verify boundary refresh and top-up behavior",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "milestone": "Transaction feedback",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-6-1",
+              "acceptance": "Consume SDK typed errors when available",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-frontend-6-2",
+              "acceptance": "Display unknown confirmation outcomes and safe hash lookup",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "milestone": "Hosted provenance",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-7-1",
+              "acceptance": "Expose build revision in release evidence",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-frontend-7-2",
+              "acceptance": "Verify configuration and demo routes against deployed contracts",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "milestone": "Live wallet validation",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-8-1",
+              "acceptance": "Run a funded Freighter lifecycle with an operator",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-frontend-8-2",
+              "acceptance": "Record rejection, account/network changes and redemption display",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "milestone": "Independent walkthrough",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-9-1",
+              "acceptance": "Observe newcomer setup with consent",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-frontend-9-2",
+              "acceptance": "Fix verified usability blockers and retest",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "milestone": "Release verification",
+          "commitTarget": 5,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-frontend-10-1",
+              "acceptance": "Run lint, types, unit, browser and export checks",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-frontend-10-2",
+              "acceptance": "Record hosted revision and follow-up issues",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "LiquiVault",
+      "baselineChecks": "node scripts/check-docs.mjs && node scripts/check-appeal-gates.mjs && node --test scripts/check-appeal-gates.test.mjs",
+      "sprintCommitTarget": null,
+      "days": [
+        {
+          "day": 1,
+          "milestone": "Reviewer entry point",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-1-1",
+              "acceptance": "Link each repo to its standalone setup and CI",
+              "status": "completed"
+            },
+            {
+              "id": "liquivault-1-2",
+              "acceptance": "Validate public evidence links and pending gates",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "milestone": "Evidence schema",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-2-1",
+              "acceptance": "Document signed, simulated and browser evidence formats",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-2-2",
+              "acceptance": "Test malformed evidence and missing provenance handling",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "milestone": "Contributor navigation",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-3-1",
+              "acceptance": "Clarify the five remaining issue scopes",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-3-2",
+              "acceptance": "Link each scope to its owning repository and verification command",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "milestone": "Setup matrix",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-4-1",
+              "acceptance": "Document platform and tool prerequisites",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-4-2",
+              "acceptance": "Record clean setup results from component repositories",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "milestone": "Evidence validation",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-5-1",
+              "acceptance": "Check run receipts against hashes and ledger fields",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-5-2",
+              "acceptance": "Test contradictory or missing evidence",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "milestone": "Documentation usability",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-6-1",
+              "acceptance": "Walk through developer onboarding from README",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-6-2",
+              "acceptance": "Fix broken links and ambiguous wallet funding steps",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "milestone": "Release provenance",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-7-1",
+              "acceptance": "Cross-link hosted revision, contracts and SDK versions",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-7-2",
+              "acceptance": "Document exact-commit CI references",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "milestone": "Wallet evidence",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-8-1",
+              "acceptance": "Record the verified live session if completed",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-8-2",
+              "acceptance": "Capture remaining blockers when evidence is incomplete",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "milestone": "Independent evidence",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-9-1",
+              "acceptance": "Record consented participant feedback",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-9-2",
+              "acceptance": "Link fixes and unresolved observations",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "milestone": "Appeal package",
+          "commitTarget": null,
+          "commits": [],
+          "tasks": [
+            {
+              "id": "liquivault-10-1",
+              "acceptance": "Refresh the appeal narrative and evidence index",
+              "status": "planned"
+            },
+            {
+              "id": "liquivault-10-2",
+              "acceptance": "Recheck exact-revision CI and dashboard eligibility",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

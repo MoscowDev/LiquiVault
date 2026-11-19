@@ -17,6 +17,14 @@ An experimental invoice-factoring application on Stellar Soroban. A merchant rec
 
 Each code repository has its own CI and contribution guide. File implementation issues and PRs in the repository that owns the code.
 
+| Repository | Developer setup | CI |
+| --- | --- | --- |
+| Contracts | [Build and run the contract tests](https://github.com/MoscowDev/liquivault-contracts#readme) | [Contracts checks](https://github.com/MoscowDev/liquivault-contracts/actions/workflows/ci.yml) |
+| SDK | [Install and run the SDK tests](https://github.com/MoscowDev/liquivault-sdk#readme) | [SDK checks](https://github.com/MoscowDev/liquivault-sdk/actions/workflows/ci.yml) |
+| Frontend | [Set up the app with the sibling SDK checkout](https://github.com/MoscowDev/liquivault-frontend#readme) | [Frontend checks](https://github.com/MoscowDev/liquivault-frontend/actions/workflows/ci.yml) |
+
+Review the [signed Testnet lifecycle and browser evidence status](docs/gates/testnet-terminal-2026-11-18.md) and the [remaining contributor work](docs/wave/README.md).
+
 ## Implemented behavior
 
 1. A merchant mints an invoice in `Issued` status with debtor, token, amount, maturity and a SHA-256 document commitment.
