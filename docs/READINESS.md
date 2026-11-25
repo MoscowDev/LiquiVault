@@ -1,10 +1,18 @@
 # Submission readiness
 
-## Current review: 16 November 2026
+## Current review: 25 November 2026
 
-All four exact published revisions had successful push CI when checked today. The [updated appeal draft](WAVE_APPLICATION.md) records commit IDs and run URLs and replaces the obsolete claim that all nine issues remain unfinished. Public issue descriptions were synchronized during this review; implemented tasks must not be reassigned as untouched work. This documentation update needs its own published CI result.
+The repositories were rejected on 4 November 2026; the first appeal became possible on 18 November. The [appeal draft](WAVE_APPLICATION.md) holds the current list of changes and published revisions.
 
-The readiness checker still reports missing real Freighter lifecycle evidence and independent-person feedback. Local archival recovery has passed three instrumented runs; older references below to unverified network recovery are historical. These evidence gates are project-defined, not mandatory published Drips criteria. No appeal has been submitted.
+Since the 16 November review:
+
+- Eight of the nine original issues were closed against the commits that implemented them. SDK #1 was narrowed to its missing scope, and seven new issues describe verified gaps. See the [backlog index](wave/README.md).
+- GitHub repository descriptions now match the documented scope (testnet, pre-audit, LVTEST rather than USDC) and link the hosted demo.
+- Internal planning notes and agent instructions were removed from the published tree.
+
+The readiness checker still reports missing real Freighter lifecycle evidence and independent-person feedback. These gates are project-defined, not published Drips criteria. Maintainer review availability must be stated in the appeal draft before submission. No appeal has been submitted.
+
+The sections below are earlier reviews, kept for history.
 
 ## Post-rejection development
 

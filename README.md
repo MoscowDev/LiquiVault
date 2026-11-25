@@ -23,7 +23,7 @@ Each code repository has its own CI and contribution guide. File implementation 
 | SDK | [Install and run the SDK tests](https://github.com/MoscowDev/liquivault-sdk#readme) | [SDK checks](https://github.com/MoscowDev/liquivault-sdk/actions/workflows/ci.yml) |
 | Frontend | [Set up the app](https://github.com/MoscowDev/liquivault-frontend#readme) | [Frontend checks](https://github.com/MoscowDev/liquivault-frontend/actions/workflows/ci.yml) |
 
-Review the [signed Testnet lifecycle and browser evidence status](docs/gates/testnet-terminal-2026-11-18.md) and the [remaining contributor work](docs/wave/README.md).
+Try the [hosted testnet demo](https://liquivault-testnet-moscowdev.dependablehamster1.chatgpt.site) with Freighter on testnet. Review the [signed Testnet lifecycle and browser evidence status](docs/gates/testnet-terminal-2026-11-18.md) and the [remaining contributor work](docs/wave/README.md).
 
 ## Implemented behavior
 
@@ -80,11 +80,17 @@ For contract commands, see the [contract README](https://github.com/MoscowDev/li
 - [Storage and archival](docs/storage.md)
 - [Deployment and smoke test](docs/deployment.md)
 - [Manual wallet demonstration](docs/wallet-demo.md)
-- [Contributor setup and review](CONTRIBUTING.md)
-- [Wave backlog and application preparation](WAVE_ISSUES.md)
-- [Factual application draft](docs/WAVE_APPLICATION.md)
+
+## Contributing
+
+Start with [CONTRIBUTING.md](CONTRIBUTING.md), then pick an open issue from the [contributor backlog](docs/wave/README.md). Issues marked `good first issue` are small and self-contained. Comment on an issue to discuss scope before starting.
+
+## Project history
+
+- [Contributor backlog and Drips submission notes](WAVE_ISSUES.md)
+- [Stellar Wave appeal draft](docs/WAVE_APPLICATION.md)
 - [Repair history](docs/REPAIR_NOTES.md)
-- [Post-rejection release candidate](docs/RELEASE_CANDIDATE.md)
+- [Testnet release candidate](docs/RELEASE_CANDIDATE.md)
 - [Independent validation protocol](docs/VALIDATION_PLAN.md)
 
 SEP-10/KYB, SEP-24, historical APY/default-rate analytics and production underwriting infrastructure are not implemented. Test results establish the exercised behavior, not an independent security audit or a guarantee of Drips approval.

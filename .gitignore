@@ -12,3 +12,7 @@ liquivault-sdk/
 liquivault-frontend/
 
 .stellar/
+
+# Local planning notes and agent skills (not part of the published project)
+.agents/
+docs/drips/

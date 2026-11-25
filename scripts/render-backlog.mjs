@@ -12,6 +12,6 @@ for (const repository of [...new Set(issues.map(issue => issue.repository))]) {
     return `- [#${issue.number}: ${issue.title}](${issue.url}) — ${draft?.progressStatus ?? 'Review current issue status'}.\n`;
   }).join('');
 }
-text += '\nThe [reviewed issue descriptions](issues.json) record candidate progress and remaining scope. The [publication record](published.json) preserves returned URLs. Progress above describes local implementation; it does not automatically update GitHub issue bodies or open/closed state. Review completed criteria before assigning work.\n';
+text += '\nThe [issue descriptions](issues.json) are the source for the GitHub issue bodies; `node scripts/publish-wave-issues.mjs --publish --refresh` synchronizes changed bodies. The [publication record](published.json) preserves returned URLs. Open and closed state is managed on GitHub.\n';
 writeFileSync(resolve(root, 'docs/wave/README.md'), text);
 console.log(`Rendered ${issues.length} published contributor issues.`);

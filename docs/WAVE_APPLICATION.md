@@ -33,7 +33,7 @@ GitHub push CI passed for all four published revisions checked on 18 November 20
 | Frontend | `5d03961f65665904497c8be9eb56afbe23f1d6af` | [Passed](https://github.com/MoscowDev/liquivault-frontend/actions/runs/43432685954) |
 | Overview | `10263353de7a73ff0639feb9792e8a6fe44dfb93` | [Passed](https://github.com/MoscowDev/LiquiVault/actions/runs/44303511026) |
 
-The [19 November follow-up](drips/REPOSITORY_FOLLOW_UP.md) records later verification and the updated SDK and frontend CI revisions. Recheck push CI for the final overview revision. The hosted frontend has its own deployment provenance.
+The [19 November follow-up](REPOSITORY_FOLLOW_UP.md) records later verification and the updated SDK and frontend CI revisions. Recheck push CI for the final overview revision. The hosted frontend has its own deployment provenance.
 
 ## Actual contributor work
 

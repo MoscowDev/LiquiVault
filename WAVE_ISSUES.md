@@ -1,36 +1,29 @@
-# Wave preparation and unfinished backlog
+# Contributor backlog
 
-16 November 2026 update: all nine public GitHub issue titles/bodies were synchronized with docs/wave/issues.json, including implementation progress and verified-CI references. Open/closed states were left unchanged. Four issues have implemented criteria and must not be assigned as unfinished work; five retain open scope. Earlier descriptions below of local-only progress are historical.
+The [backlog index](docs/wave/README.md) lists every published issue with its current status. Issue bodies are generated from [docs/wave/issues.json](docs/wave/issues.json); returned URLs are recorded in [docs/wave/published.json](docs/wave/published.json).
 
-Following rejection, the [release candidate](docs/RELEASE_CANDIDATE.md) implements portions of this backlog. The original published issue descriptions are historical scope, not an assertion that all nine tasks remain untouched. Local descriptions now record implemented criteria and remaining scope before future contributor assignment; GitHub issue bodies and open/closed state are separate and are not automatically changed.
+## Current state (25 November 2026)
 
-The reviewed issue descriptions are in [docs/wave/issues.json](docs/wave/issues.json). Completed criteria are checked, and the [backlog index](docs/wave/README.md) distinguishes implemented, partial and open scope. Each includes original code context, bounded acceptance criteria and verification commands. Suggested complexity is advisory; the maintainer sets program complexity after repository approval.
+Eight of the first nine issues were completed and closed with the commits that implemented them. SDK #1 stays open, narrowed to the part that is still missing: named per-contract error codes. Seven new issues cover verified gaps:
 
-Publication status and actual issue URLs are recorded in [docs/wave/published.json](docs/wave/published.json). Until that file contains a returned GitHub URL, an entry is a prepared draft, not an opened issue. No PR, outside contributor, adoption, approval or reward history is fabricated.
+| Repository | Open issues | Complexity |
+| --- | --- | --- |
+| Contracts | Event assertions in host tests; specific error variants in escrow negative paths; Windows/macOS CI | Medium, Trivial, Trivial |
+| SDK | Named contract error codes; packed ESM/CJS/TypeScript consumer check; typed event decoders | Medium, Medium, High |
+| Frontend | Missing-trustline guidance; build revision and contract IDs in the app | Medium, Trivial |
 
-## Proposed distribution
+Each issue states its context, scope, acceptance criteria and verification command. Suggested complexity is advisory; the maintainer sets program complexity in the Drips app. Trivial issues carry the `good first issue` label.
 
-The [published backlog](docs/wave/README.md) provides direct links to the opened issues.
-
-- Contracts: quote coverage and wire compatibility are implemented. Instrumented local automatic recovery is implemented; separate manual recovery remains open.
-- SDK: restoration planning and local automatic-recovery integration are implemented. Typed errors, explicit manual recovery and dedicated admin-builder/body-change boundary coverage remain open.
-- Frontend: browser wallet-flow tests and redemption eligibility are implemented. Additional overlapping-refresh and account-switch stress coverage remains open. Live-extension evidence is a separate release gate.
-
-These tasks extend the project; they do not defer the security dependency updates or documentation corrections from this maintenance pass. Significant economic changes and production deployment are outside their scope.
-
-## Publish or inspect
+## Publishing changes
 
 ```sh
-node scripts/publish-wave-issues.mjs
-node scripts/publish-wave-issues.mjs --publish
+node scripts/publish-wave-issues.mjs                      # dry run: list drafts
+node scripts/publish-wave-issues.mjs --publish            # create missing issues
+node scripts/publish-wave-issues.mjs --publish --refresh  # also update changed bodies and titles
 ```
 
-After reviewing changed draft descriptions, use `--publish --refresh` to synchronize changed bodies of existing marked issues. Unchanged bodies are left alone.
-
-The default is a dry run. Publishing uses an existing GitHub credential in memory, checks the authenticated account and deduplicates by a stable marker. It does not install the Drips app, apply a program label, submit an application or create fake contribution activity. If account authorization is unavailable, retain the drafts and authenticate through the normal GitHub flow.
+The publisher checks the authenticated account and deduplicates by a hidden marker in each body. It does not change open/closed state, apply Drips labels or submit an application.
 
 ## Drips submission
 
-Follow the [official maintainer guide](https://docs.drips.network/wave/maintainers/participating-in-a-wave/). Install/sync the GitHub app, select relevant code repositories, apply and wait for organizer approval. Use the actual program workflow/label only after approval. Repository application limits and appeal rules are set by Drips; a local `help wanted` label does not imply acceptance.
-
-Prioritize contracts first, then SDK; submit the frontend when its contributor workflow is independently verified. Review applications and PRs promptly during the Wave. No minimum star count or invented user traction is claimed.
+Follow the [official maintainer guide](https://docs.drips.network/wave/maintainers/participating-in-a-wave/). Appeals are filed from the Orgs and Repos dashboard; the first is possible two weeks after rejection, a declined appeal starts a one-month cooldown, and each repository has at most three appeals. A local `help wanted` label does not imply acceptance. No star count, user traction or contributor activity is claimed.

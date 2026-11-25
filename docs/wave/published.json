@@ -23,7 +23,7 @@
   {
     "repository": "MoscowDev/liquivault-sdk",
     "key": "typed-errors",
-    "title": "Map contract and transaction failures to typed SDK errors",
+    "title": "Map contract error codes to named per-contract SDK errors",
     "number": 1,
     "url": "https://github.com/MoscowDev/liquivault-sdk/issues/1"
   },
@@ -61,5 +61,54 @@
     "title": "Display contract-derived redemption lock and coverage eligibility",
     "number": 3,
     "url": "https://github.com/MoscowDev/liquivault-frontend/issues/3"
+  },
+  {
+    "repository": "MoscowDev/liquivault-contracts",
+    "key": "event-assertions",
+    "title": "Assert contract events in host tests",
+    "number": 4,
+    "url": "https://github.com/MoscowDev/liquivault-contracts/issues/4"
+  },
+  {
+    "repository": "MoscowDev/liquivault-contracts",
+    "key": "specific-error-assertions",
+    "title": "Assert specific error variants in escrow negative-path tests",
+    "number": 5,
+    "url": "https://github.com/MoscowDev/liquivault-contracts/issues/5"
+  },
+  {
+    "repository": "MoscowDev/liquivault-contracts",
+    "key": "cross-platform-ci",
+    "title": "Run contract host tests on Windows and macOS in CI",
+    "number": 6,
+    "url": "https://github.com/MoscowDev/liquivault-contracts/issues/6"
+  },
+  {
+    "repository": "MoscowDev/liquivault-sdk",
+    "key": "packed-consumer-check",
+    "title": "Verify the packed SDK in clean ESM, CommonJS and TypeScript consumers",
+    "number": 4,
+    "url": "https://github.com/MoscowDev/liquivault-sdk/issues/4"
+  },
+  {
+    "repository": "MoscowDev/liquivault-sdk",
+    "key": "event-decoding",
+    "title": "Add typed decoders for LiquiVault contract events",
+    "number": 5,
+    "url": "https://github.com/MoscowDev/liquivault-sdk/issues/5"
+  },
+  {
+    "repository": "MoscowDev/liquivault-frontend",
+    "key": "trustline-guidance",
+    "title": "Detect a missing LVTEST trustline and show an actionable setup step",
+    "number": 4,
+    "url": "https://github.com/MoscowDev/liquivault-frontend/issues/4"
+  },
+  {
+    "repository": "MoscowDev/liquivault-frontend",
+    "key": "build-provenance",
+    "title": "Show the build revision and configured contract IDs in the app",
+    "number": 5,
+    "url": "https://github.com/MoscowDev/liquivault-frontend/issues/5"
   }
 ]
