@@ -16,6 +16,8 @@ Draft updated 25 November 2026. The repositories were rejected on 4 November 202
 
 - A fresh isolated Stellar Testnet deployment confirmed 19 transactions, including deposits in both tranches and invoice issuance, authorized verification, factoring and settlement. Deployed capital returned to zero. Read-only Testnet simulations returned `WithdrawalLocked` for both tranches. Nine mocked frontend tests passed. [Run report and signed transaction receipt](https://github.com/MoscowDev/LiquiVault/blob/1026335/docs/gates/testnet-terminal-2026-11-18.md)
 
+- A live Freighter session on the hosted demo, on 26 November 2026, confirmed deposit, invoice issuance, separate verifier approval, factoring and settlement on Testnet. Freighter signed each merchant/LP transaction, and a rejected signature showed "User rejected this request" with no balance change. [Wallet record](gates/wallet-freighter-2026-11-26.json)
+
 See [release evidence](RELEASE_CANDIDATE.md), [recovery receipts](gates/README.md) and [known limitations](KNOWN_LIMITATIONS.md).
 
 ## Project and Stellar value
@@ -44,7 +46,7 @@ Review hours and response times will be confirmed before contributor assignments
 ## Remaining steps
 
 1. State real review hours and response times under Maintainer availability.
-2. Complete the [real Freighter walkthrough](wallet-demo.md), recording confirmed hashes and actual rejection behavior. `node scripts/prepare-wallet-trustline.mjs <public key>` prepares the LVTEST trustline.
+2. After the deposit lock expires (from 13:32 UTC on 27 November 2026), withdraw through Freighter and add the hash, plus account-switch behavior and client versions, to the wallet record.
 3. Obtain consented [independent feedback](VALIDATION_PLAN.md), record attempted steps and blockers, and link fixes or explain unresolved feedback.
 4. Appeal from the Drips Orgs and Repos dashboard, contracts and SDK first. A declined appeal starts a one-month cooldown, and each repository has at most three appeals.
 

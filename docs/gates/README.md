@@ -17,3 +17,7 @@ All three runs confirmed normal expiry of a pool instance and LP position, a sim
 The network used Protocol 28 and a pinned Quickstart image whose RPC supports protocol hosts 28/29. The fixture uses 256-ledger minimum persistence and cloned contracts with 32-ledger thresholds, 256-ledger extension targets and a one-second withdrawal lock. Canonical contract sources and public testnet deployment records were unchanged. Each receipt lists these patches and the fixture WASM/source hashes. This proves the exercised recovery path on an instrumented local network; it does not prove production timing, every archival scenario, or a manual fallback.
 
 Local transaction hashes cannot be resolved on public testnet explorers. Reproduce the fixture using the [contract instructions](https://github.com/MoscowDev/liquivault-contracts/blob/main/docs-local-integration.md). A browser fixture, CLI signature, AI review or maintainer-run session must never be recorded as independent-person validation.
+
+## Live wallet session
+
+On 26 November 2026 the maintainer completed the hosted-demo lifecycle with the official Freighter extension on Testnet: deposit, invoice issuance, separate verifier approval, factoring and settlement, plus one rejected signature. Every hash was checked on Horizon. See [wallet-freighter-2026-11-26.json](wallet-freighter-2026-11-26.json), including what was not recorded.

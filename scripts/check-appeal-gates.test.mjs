@@ -29,7 +29,29 @@ test('valid local receipts report outstanding human evidence', t => {
   assert.equal(result.status, 0, result.stderr);
   const report = JSON.parse(result.stdout);
   assert.equal(report.evidenceComplete, false);
+  assert.deepEqual(report.pending, ['independent-developer-or-user-feedback']);
+});
+
+test('removing the wallet record reports the wallet gate as pending', t => {
+  const files = fixture(t);
+  files.change('status.json', status => { status.walletEvidence = null; });
+  const report = JSON.parse(files.run().stdout);
   assert.deepEqual(report.pending, ['real-wallet-extension-lifecycle', 'independent-developer-or-user-feedback']);
+});
+
+test('a wallet record without an observed rejection fails', t => {
+  const files = fixture(t);
+  files.change('wallet-freighter-2026-11-26.json', record => { record.rejectionCheck.providerResponseObserved = false; });
+  const result = files.run();
+  assert.equal(result.status, 1);
+});
+
+test('a wallet record missing a lifecycle method fails', t => {
+  const files = fixture(t);
+  files.change('wallet-freighter-2026-11-26.json', record => { record.transactions = record.transactions.filter(item => item.method !== 'settle_invoice'); });
+  const result = files.run();
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /settle_invoice/);
 });
 
 test('strict readiness rejects incomplete evidence', t => {

@@ -33,7 +33,7 @@ A new signed proof completed at 2026-11-11T12:46:02.708Z from contract-source co
 - liquidityPool: `CBWGPRRK7O2G4WTEWQEJMMB5L2CZC3DOXA4VPLKDPQZZNMTU4HGDE4PD`
 - factoringEscrow: `CCV7TQNE64J55MUZ5BOP5ZNM54WN5L6WPGQXSUUU2P4CT4S4YSQQFAQB`
 
-This proves signed CLI/chain execution; it does not claim interactive Freighter-extension verification or an independent audit.
+This proves signed CLI/chain execution; it does not by itself claim interactive Freighter-extension verification or an independent audit. A separate live Freighter session is recorded in the [wallet record](gates/wallet-freighter-2026-11-26.json).
 
 ## Historical signed testnet evidence
 
