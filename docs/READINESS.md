@@ -10,7 +10,7 @@ Since the 16 November review:
 - GitHub repository descriptions now match the documented scope (testnet, pre-audit, LVTEST rather than USDC) and link the hosted demo.
 - Internal planning notes and agent instructions were removed from the published tree.
 
-A live Freighter lifecycle was recorded on 26 November 2026 ([wallet record](gates/wallet-freighter-2026-11-26.json)). The readiness checker still reports missing independent-person feedback. These gates are project-defined, not published Drips criteria. Maintainer review availability must be stated in the appeal draft before submission. No appeal has been submitted.
+A live wallet-extension lifecycle (Varial, formerly Freighter) was recorded on 26 November 2026 ([wallet record](gates/wallet-freighter-2026-11-26.json)). The readiness checker still reports missing independent-person feedback. These gates are project-defined, not published Drips criteria. Maintainer review availability must be stated in the appeal draft before submission. No appeal has been submitted.
 
 The sections below are earlier reviews, kept for history.
 

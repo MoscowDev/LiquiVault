@@ -4,7 +4,7 @@
   "status": "confirmed",
   "network": "testnet",
   "date": "2026-11-26",
-  "operator": "Project maintainer using the official Freighter browser extension on the hosted demo",
+  "operator": "Project maintainer using the official Varial wallet extension (formerly Freighter, renamed October 2026) on the hosted demo",
   "wallet": "GC75UVRXTGW7FDPOQ32AMSOR6YGG245T4IKRBEPVQAWMLYSPKLTVMILM",
   "frontend": {
     "url": "https://liquivault-testnet-moscowdev.dependablehamster1.chatgpt.site",
@@ -19,29 +19,102 @@
     "asset": "LVTEST:GCW7P2SWHLMTSQM3BGBB4NO7RPC2FJPQIBKGUL373WMYU3GZU4WJB2U7"
   },
   "setup": [
-    { "action": "changeTrust LVTEST signed with Freighter through Stellar Lab", "hash": "4300a03f58c2d172d1201d4904ad1e82fea5f11c42e1cecc5a44ed697570feb3" },
-    { "action": "operator mint of 10,000 LVTEST (CLI, deployment admin)", "hash": "d31ca2a67b275c8662bbe36b2fd0bb07a36aafe51b587740e61ce742556cf89e" },
-    { "action": "operator mint of 5,000 LVTEST (CLI, deployment admin)", "hash": "3b6a828da0b8b845a40ff766b7cc9a27d06f58d1c2852662e72409a12dfcc114" }
+    {
+      "action": "changeTrust LVTEST signed with the Varial (formerly Freighter) extension through Stellar Lab",
+      "hash": "4300a03f58c2d172d1201d4904ad1e82fea5f11c42e1cecc5a44ed697570feb3"
+    },
+    {
+      "action": "operator mint of 10,000 LVTEST (CLI, deployment admin)",
+      "hash": "d31ca2a67b275c8662bbe36b2fd0bb07a36aafe51b587740e61ce742556cf89e"
+    },
+    {
+      "action": "operator mint of 5,000 LVTEST (CLI, deployment admin)",
+      "hash": "3b6a828da0b8b845a40ff766b7cc9a27d06f58d1c2852662e72409a12dfcc114"
+    }
   ],
   "transactions": [
-    { "method": "deposit", "contract": "liquidityPool", "signer": "official-extension", "confirmed": true, "ledger": 5935265, "hash": "f257409aa1e6d9b8aba7f7bb473484a7715559ceab8d3c209cf1249071efd4dd", "note": "Senior deposit of 100000000000 units (10,000 LVTEST). The form's sample amount was left unchanged; the operator intended 1,000." },
-    { "method": "mint_invoice", "contract": "invoiceRegistry", "signer": "official-extension", "confirmed": true, "ledger": 5935419, "hash": "4b8f2b544ec8591c719aecff15b695c6891581b7cbecd947a6fecddcbfd241d6", "note": "Invoice 2, face value 10000000000 units (1,000 LVTEST), status Issued." },
-    { "method": "verify_invoice", "contract": "invoiceRegistry", "signer": "verifier-cli", "confirmed": true, "ledger": 5935447, "hash": "2ad525e633e86904a6cd87716248f1c5ca17a83bb70a72432d6460ce81a4f4b4", "note": "Separate verifier approval, risk tier B; status Verified." },
-    { "method": "factor_invoice", "contract": "factoringEscrow", "signer": "official-extension", "confirmed": true, "ledger": 5935491, "hash": "d580410ab9045b01d08b8c48bfa52caa2f3d5d319bbd7ec940f9c49a34a23bc4", "note": "Status Factored; wallet LVTEST balance 5000.0000000 -> 5982.6725425 (advance 982.6725425)." },
-    { "method": "settle_invoice", "contract": "factoringEscrow", "signer": "official-extension", "confirmed": true, "ledger": 5935524, "hash": "a357ede9c707c8e55f0f01b2c1e0d697089103d73736c30849768d3fd4f4dfd1", "note": "Status Settled; wallet LVTEST balance 5982.6725425 -> 4982.6725425 (face value 1,000 repaid)." }
+    {
+      "method": "deposit",
+      "contract": "liquidityPool",
+      "signer": "official-extension",
+      "confirmed": true,
+      "ledger": 5935265,
+      "hash": "f257409aa1e6d9b8aba7f7bb473484a7715559ceab8d3c209cf1249071efd4dd",
+      "note": "Senior deposit of 100000000000 units (10,000 LVTEST). The form's sample amount was left unchanged; the operator intended 1,000."
+    },
+    {
+      "method": "mint_invoice",
+      "contract": "invoiceRegistry",
+      "signer": "official-extension",
+      "confirmed": true,
+      "ledger": 5935419,
+      "hash": "4b8f2b544ec8591c719aecff15b695c6891581b7cbecd947a6fecddcbfd241d6",
+      "note": "Invoice 2, face value 10000000000 units (1,000 LVTEST), status Issued."
+    },
+    {
+      "method": "verify_invoice",
+      "contract": "invoiceRegistry",
+      "signer": "verifier-cli",
+      "confirmed": true,
+      "ledger": 5935447,
+      "hash": "2ad525e633e86904a6cd87716248f1c5ca17a83bb70a72432d6460ce81a4f4b4",
+      "note": "Separate verifier approval, risk tier B; status Verified."
+    },
+    {
+      "method": "factor_invoice",
+      "contract": "factoringEscrow",
+      "signer": "official-extension",
+      "confirmed": true,
+      "ledger": 5935491,
+      "hash": "d580410ab9045b01d08b8c48bfa52caa2f3d5d319bbd7ec940f9c49a34a23bc4",
+      "note": "Status Factored; wallet LVTEST balance 5000.0000000 -> 5982.6725425 (advance 982.6725425)."
+    },
+    {
+      "method": "settle_invoice",
+      "contract": "factoringEscrow",
+      "signer": "official-extension",
+      "confirmed": true,
+      "ledger": 5935524,
+      "hash": "a357ede9c707c8e55f0f01b2c1e0d697089103d73736c30849768d3fd4f4dfd1",
+      "note": "Status Settled; wallet LVTEST balance 5982.6725425 -> 4982.6725425 (face value 1,000 repaid)."
+    }
   ],
   "rejectionCheck": {
     "providerResponseObserved": true,
-    "observedMessage": "User rejected this request",
+    "observedMessage": "The user rejected this request.",
     "unchanged": true,
-    "note": "Operator-reported: rejecting the Freighter signature showed this message and the balance did not change. A rejected signature produces no on-chain transaction."
+    "note": "Operator-reported and captured in screenshot 10-signature-rejected.png: rejecting the wallet signature showed this message and the balance stayed at 4,982.67 LVTEST. A rejected signature produces no on-chain transaction."
   },
   "notRecorded": [
     "Account or network switch behavior during the live session",
-    "Withdrawal attempt during the 24-hour lock in the hosted UI",
     "Completed withdrawal after the lock expires (earliest 2026-11-27T13:32:48Z)",
-    "Browser and Freighter versions"
+    "Browser and wallet extension version numbers"
   ],
   "verification": "Each hash was fetched from Horizon testnet: successful, source account and invoked contract/function match the entries above. Invoice 2 status was read from the registry after each step. Balances are Horizon LVTEST balances of the wallet.",
-  "assertionsPassed": true
+  "assertionsPassed": true,
+  "walletExtension": {
+    "name": "Varial (formerly Freighter)",
+    "browser": "Chrome",
+    "note": "The demo connects through the Freighter API, so the app labels signing as \"Signing with Freighter\"; the extension popup is titled Varial."
+  },
+  "observations": {
+    "withdrawalAttempt": "Senior withdraw tab with 10000 entered showed \"Exceeds your share balance\" (9,972.512 shares held) and the notice \"Each top-up locks the entire tranche position for 24 hours. The contract rechecks eligibility when executed\". No withdrawal was submitted; a lock-specific rejection was not shown because the amount check failed first.",
+    "rejectionBanner": "The hosted build showed the rejection message in the green success-styled banner with a check icon. liquivault-frontend commit d5d5392 renders errors red and unknown outcomes amber; the hosted demo had not been redeployed with it."
+  },
+  "screenshots": {
+    "directory": "wallet-2026-11-26",
+    "note": "Maintainer screenshots cropped to the page or wallet popup; browser chrome and unrelated windows removed.",
+    "files": {
+      "01-wallet-signing-trustline.png": "Varial popup confirming the LVTEST changeTrust from lab.stellar.org on Test Net",
+      "02-trustline-submitted.png": "Stellar Lab result: hash 4300a03f..., ledger 5935150",
+      "03-deposit-confirmed.png": "Liquidity page: confirmed in ledger 5935265 (deposit f257409a...), position 10,000 LVTEST",
+      "04-withdraw-blocked.png": "Withdraw tab: share-balance error and 24-hour lock notice",
+      "05-invoice-minted.png": "Merchant page: confirmed in ledger 5935419 (mint 4b8f2b54...)",
+      "06-factoring-quote.png": "Factoring quote for invoice 2: face 1,000, discount 17.33, net payout 982.67, signing in progress",
+      "07-invoice-factored.png": "Confirmed in ledger 5935491 (factor d580410a...); invoice 2 Factored, wallet 5,982.67",
+      "08-invoice-settled.png": "Invoice 2 Settled in the registry table",
+      "09-repayment-confirmed.png": "Confirmed in ledger 5935524 (settle a357ede9...); wallet 4,982.67",
+      "10-signature-rejected.png": "Rejected signature: \"The user rejected this request.\" in the success-styled banner; balance unchanged at 4,982.67"
+    }
+  }
 }

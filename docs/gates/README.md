@@ -20,4 +20,22 @@ Local transaction hashes cannot be resolved on public testnet explorers. Reprodu
 
 ## Live wallet session
 
-On 26 November 2026 the maintainer completed the hosted-demo lifecycle with the official Freighter extension on Testnet: deposit, invoice issuance, separate verifier approval, factoring and settlement, plus one rejected signature. Every hash was checked on Horizon. See [wallet-freighter-2026-11-26.json](wallet-freighter-2026-11-26.json), including what was not recorded.
+On 26 November 2026 the maintainer completed the hosted-demo lifecycle with the official Varial wallet extension (formerly Freighter) on Testnet: deposit, invoice issuance, separate verifier approval, factoring and settlement, plus one rejected signature. Every hash was checked on Horizon. See [wallet-freighter-2026-11-26.json](wallet-freighter-2026-11-26.json), including what was not recorded.
+
+### Screenshots
+
+Cropped to the page or wallet popup. Captions match the [wallet record](wallet-freighter-2026-11-26.json).
+
+| Step | Screenshot |
+| --- | --- |
+| Wallet confirms the LVTEST trustline | ![Varial confirmation](wallet-2026-11-26/01-wallet-signing-trustline.png) |
+| Deposit confirmed in ledger 5935265 | ![Deposit confirmed](wallet-2026-11-26/03-deposit-confirmed.png) |
+| Withdrawal blocked: share balance and 24-hour lock notice | ![Withdrawal blocked](wallet-2026-11-26/04-withdraw-blocked.png) |
+| Invoice 2 minted in ledger 5935419 | ![Invoice minted](wallet-2026-11-26/05-invoice-minted.png) |
+| Factoring quote: net payout 982.67 | ![Factoring quote](wallet-2026-11-26/06-factoring-quote.png) |
+| Invoice 2 factored in ledger 5935491 | ![Invoice factored](wallet-2026-11-26/07-invoice-factored.png) |
+| Repayment confirmed in ledger 5935524 | ![Repayment confirmed](wallet-2026-11-26/09-repayment-confirmed.png) |
+| Invoice 2 settled | ![Invoice settled](wallet-2026-11-26/08-invoice-settled.png) |
+| Rejected signature | ![Signature rejected](wallet-2026-11-26/10-signature-rejected.png) |
+
+The rejection screenshot shows the message in the hosted build's green, success-styled banner. Frontend commit `d5d5392` renders errors in red and unknown outcomes in amber; the hosted demo needs a redeploy to pick it up. The [Stellar Lab result](wallet-2026-11-26/02-trustline-submitted.png) for the trustline is also kept.

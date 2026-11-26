@@ -4,7 +4,7 @@ This walkthrough uses the current issuer-controlled **LVTEST** asset and repaire
 
 ## Prepare
 
-1. Install/unlock Freighter and select Stellar testnet with passphrase `Test SDF Network ; September 2015`.
+1. Install/unlock the Varial wallet extension (formerly Freighter; the app still connects through the Freighter API) and select Stellar testnet with passphrase `Test SDF Network ; September 2015`.
 2. Fund its public account through Stellar Friendbot. XLM pays network fees; Friendbot does not supply LVTEST.
 3. Add a trustline for the `testUsdcAsset` code and issuer in the [deployment record](https://github.com/MoscowDev/liquivault-contracts/blob/main/deployments/testnet.json). Approve the trustline in the wallet. Alternatively, run `node scripts/prepare-wallet-trustline.mjs <public key>` from this repository (with the sibling `liquivault-sdk` checkout installed) to print an unsigned changeTrust XDR, then sign and submit it with your wallet; the script never signs or submits. Never paste the wallet seed into an issue, application, browser form or repository.
 4. Obtain test tokens from the deployment's test issuer. If you created your own deployment, its isolated admin alias is available in the ignored CLI config directory. A public record does not grant access to its issuer key.

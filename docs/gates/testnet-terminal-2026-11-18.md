@@ -31,6 +31,6 @@ The simulations used the liquidity provider and pool from the receipt and attemp
 
 On 17 November, the original wallet's LVTEST trustline transaction was prepared as unsigned Testnet XDR. The local summary recorded zero signatures, status `unsigned-not-submitted`, and expiry `2026-11-18T15:08:41Z`. The isolated CLI run used its own accounts and issuer.
 
-Update, 26 November 2026: a live Freighter lifecycle and signature rejection were recorded in the [wallet record](wallet-freighter-2026-11-26.json); account switching and the hosted lock display remain unrecorded. The original note follows.
+Update, 26 November 2026: a live Varial (formerly Freighter) lifecycle and signature rejection were recorded in the [wallet record](wallet-freighter-2026-11-26.json); account switching and the hosted lock display remain unrecorded. The original note follows.
 
 The frontend tests used a mocked wallet. Live Freighter evidence is pending for the hosted lifecycle, signature rejection, account and network switching, and the hosted redemption-lock display. Use the [wallet walkthrough](../wallet-demo.md) and [session worksheet](../SESSION_WORKSHEET.md) to record actual behavior, confirmed hashes and before/after balances. Independent participant validation is also pending.
