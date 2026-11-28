@@ -8,7 +8,7 @@ Run `node scripts/check-appeal-gates.mjs` from the repository root to validate t
 | --- | --- | --- |
 | Network archival and recovery | Passed three times on separately instrumented localhost fixtures | [First run](archival-recovery.json), [fresh replay](archival-recovery-replay.json), [13 November rerun](archival-recovery-final.json) |
 | Actual wallet-extension lifecycle | In progress; no completed session claimed here | [Wallet protocol](../wallet-demo.md) |
-| Independent developer/user validation | Pending participants and real feedback | [Validation protocol](../VALIDATION_PLAN.md), [invitation draft](../VALIDATION_INVITATION.md) |
+| Independent developer/user validation | Confirmed wallet-to-wallet transfer with an approved, consented tester review | [Session receipt](independent-wallet-transfer-2026-11-28.json) · [Tester and maintainer reviews](../SESSION_WORKSHEET.md#tester-note-for-the-28-november-2026-session) |
 
 ## Recovery scope
 

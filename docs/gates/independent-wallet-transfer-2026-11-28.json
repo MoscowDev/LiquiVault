@@ -1,0 +1,16 @@
+{
+  "scope": "independent-person-validation",
+  "participantReference": "Anonymous independent tester",
+  "independentOfMaintainer": true,
+  "consentRecorded": true,
+  "consentSource": "Maintainer reported that the tester approved the wording and granted permission to publish the review.",
+  "completedAt": "2026-11-28T01:53:59Z",
+  "network": "Stellar Testnet",
+  "stepsActuallyAttempted": [
+    "Receive 100 LVTEST and then 1,000 LVTEST on the funded test wallet.",
+    "Send 300 LVTEST back to the funding account using Freighter."
+  ],
+  "feedbackSummary": "The tester approved the account of the receive-and-return flow. The 300 LVTEST return payment confirmed at ledger 5961439.",
+  "maintainerResponse": "Verified the payment on Horizon and recorded both funding payments and the return payment. A LiquiVault deposit attempt is the proposed follow-up.",
+  "sessionScope": "Wallet-to-wallet transfer. LiquiVault app use remains unverified."
+}

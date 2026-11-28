@@ -47,7 +47,7 @@ Review hours and response times will be confirmed before contributor assignments
 
 1. State real review hours and response times under Maintainer availability.
 2. After the deposit lock expires (from 13:32 UTC on 27 November 2026), withdraw through Freighter and add the hash, plus account-switch behavior and client versions, to the wallet record.
-3. Obtain consented [independent feedback](VALIDATION_PLAN.md), record attempted steps and blockers, and link fixes or explain unresolved feedback.
+3. Include the [consented independent wallet-transfer review](SESSION_WORKSHEET.md#tester-note-for-the-28-november-2026-session). A deposit through the LiquiVault app is a follow-up.
 4. Appeal from the Drips Orgs and Repos dashboard, contracts and SDK first. A declined appeal starts a one-month cooldown, and each repository has at most three appeals.
 
 LiquiVault tracks the wallet and feedback checks as internal readiness gates. Run `node scripts/check-appeal-gates.mjs --require-complete` once the live wallet receipt and independent feedback have been recorded.

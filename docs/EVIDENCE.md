@@ -52,7 +52,7 @@ This proves signed CLI/chain execution; it does not by itself claim interactive 
 | 2026-11-28 01:17:59 | 5961007 | Stellar Testnet `payment` | 1,000 LVTEST | [`ae19d8169ca0424bbebd789b8b9ff0a8dc16613dd72a381fe801c07763693827`](https://horizon-testnet.stellar.org/transactions/ae19d8169ca0424bbebd789b8b9ff0a8dc16613dd72a381fe801c07763693827) |
 | 2026-11-28 01:53:59 | 5961439 | Stellar Testnet `payment` (tester return transfer) | 300 LVTEST | [`571df1a51d8c6e3f13d6f916dd7eb415e6f18a101a1e44faa6a08936a42807a6`](https://horizon-testnet.stellar.org/transactions/571df1a51d8c6e3f13d6f916dd7eb415e6f18a101a1e44faa6a08936a42807a6) |
 
-The two funding payments sent a total of `1,100 LVTEST` to the wallet the maintainer identified as the independent tester's. The tester's wallet then sent `300 LVTEST` back to the same funding account. All three payments used LiquiVault's configured LVTEST issuer, `GCW7P2SWHLMTSQM3BGBB4NO7RPC2FJPQIBKGUL373WMYU3GZU4WJB2U7`. Horizon confirms the wallet-to-wallet payment. The tester's feedback and any LiquiVault deposit evidence are pending.
+The two funding payments sent a total of `1,100 LVTEST` to the wallet the maintainer identified as the independent tester's. The tester's wallet then sent `300 LVTEST` back to the same funding account. All three payments used LiquiVault's configured LVTEST issuer, `GCW7P2SWHLMTSQM3BGBB4NO7RPC2FJPQIBKGUL373WMYU3GZU4WJB2U7`. Horizon confirms the wallet-to-wallet payment. See the [approved tester review](SESSION_WORKSHEET.md#tester-note-for-the-28-november-2026-session) and [session receipt](gates/independent-wallet-transfer-2026-11-28.json). A LiquiVault deposit remains a follow-up.
 
 ## Historical signed testnet evidence
 

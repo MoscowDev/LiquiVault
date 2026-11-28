@@ -38,14 +38,22 @@ Only after confirmation, create the real wallet receipt matching the fields chec
 
 ### Tester note for the 28 November 2026 session
 
-Draft for the tester to edit and approve. App feedback and publication consent are pending. The [evidence log](EVIDENCE.md#lvtest-wallet-funding-and-return-payment) records the confirmed return payment.
+The maintainer reported that the tester approved the wording below and granted permission to share it in LiquiVault's documentation and Drips appeal. The review uses anonymous attribution. The [evidence log](EVIDENCE.md#lvtest-wallet-funding-and-return-payment) records the confirmed return payment.
 
-> On 28 November 2026, I used my Freighter wallet on Stellar Testnet to send 300 LVTEST back to the account that had funded my test wallet. I wanted to check that I could send the test tokens back after receiving them. The transfer succeeded and was confirmed in ledger 5961439.
+> On 28 November 2026, I tested whether I could receive LiquiVault's LVTEST token and send it back from my own Freighter wallet on Stellar Testnet. My wallet had an active trustline for LVTEST. The account funding the test sent me 100 LVTEST first and then another 1,000 LVTEST.
+>
+> I sent 300 LVTEST back to the account that funded me. I expected the payment to reach that account using the same LVTEST asset I had received. The transaction succeeded and was confirmed on Stellar Testnet at ledger 5961439. That completed the receive-and-return flow I set out to test.
+>
+> A useful follow-up would be to try a deposit from the LiquiVault interface. I'd check whether the app explains what I'm authorizing in Freighter, then compare the confirmed transaction with the deposit and balance shown in the app.
 
 The session record currently covers the return transfer. Ask the tester to describe any LiquiVault steps they tried and what they observed before adding app feedback.
 
-Ask the tester to confirm their sharing preference separately.
+### Maintainer review for the 28 November 2026 session
 
-> You may share my edited note in LiquiVault's documentation and Drips appeal [anonymously / under my chosen name]. You may include the relevant Testnet transaction hashes [yes / no].
+> I arranged Testnet funding so an independent tester could use their own wallet. Before funding it, I verified that the wallet had an authorized trustline for LiquiVault's configured LVTEST issuer. The funding account made two confirmed payments totaling 1,100 LVTEST. The tester then used their wallet to send 300 LVTEST back.
+>
+> I checked the return payment on Horizon and confirmed that the source was the funded wallet, the destination was the original funding account, and the asset used LiquiVault's configured issuer. I recorded all three confirmed payments in the public evidence log.
+>
+> For the next session, I'd ask the tester to follow the hosted app's setup instructions and attempt a liquidity deposit. I'd capture what they see at wallet connection, transaction approval, and confirmation, along with their feedback on any step that needs clearer instructions.
 
 Recruit a real developer or prospective user. A setup failure is useful feedback; it is not a completed lifecycle. AI review and maintainer-operated tests do not count as independent-person validation. Use the [invitation draft](VALIDATION_INVITATION.md) and [validation protocol](VALIDATION_PLAN.md); no invitation has been sent by preparing this worksheet.
