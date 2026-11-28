@@ -6,6 +6,12 @@ An experimental invoice-factoring application on Stellar Soroban. A merchant rec
 
 **Testnet only, pre-audit.** The demonstration token is issued for testing; it is not Circle-issued USDC. Neither tranche guarantees principal or returns. The contracts record on-chain ownership; they do not establish legal title, verify commercial documents, or enforce repayment off-chain.
 
+## Start here
+
+- **Try LiquiVault.** Open the [hosted Testnet demo](https://liquivault-testnet-moscowdev.dependablehamster1.chatgpt.site) and follow the [wallet walkthrough](docs/wallet-demo.md) for LVTEST funding, deposits, and verifier approval.
+- **Run the checks.** Follow the [contract checks](https://github.com/MoscowDev/liquivault-contracts#readme), [SDK checks](https://github.com/MoscowDev/liquivault-sdk#readme), or [frontend setup](https://github.com/MoscowDev/liquivault-frontend#readme). For this documentation repo, run `node scripts/check-docs.mjs`.
+- **Verify the results.** Open the [evidence index](docs/EVIDENCE.md#current-evidence) for the signed Testnet lifecycle, live wallet session, and external tester's transfer.
+
 ## Repositories
 
 | Repository | Purpose | License |
@@ -16,14 +22,6 @@ An experimental invoice-factoring application on Stellar Soroban. A merchant rec
 | This repository | Shared design, evidence and contributor guidance | [Apache-2.0](LICENSE) |
 
 Each code repository has its own CI and contribution guide. File implementation issues and PRs in the repository that owns the code.
-
-| Repository | Developer setup | CI |
-| --- | --- | --- |
-| Contracts | [Build and run the contract tests](https://github.com/MoscowDev/liquivault-contracts#readme) | [Contracts checks](https://github.com/MoscowDev/liquivault-contracts/actions/workflows/ci.yml) |
-| SDK | [Install and run the SDK tests](https://github.com/MoscowDev/liquivault-sdk#readme) | [SDK checks](https://github.com/MoscowDev/liquivault-sdk/actions/workflows/ci.yml) |
-| Frontend | [Set up the app](https://github.com/MoscowDev/liquivault-frontend#readme) | [Frontend checks](https://github.com/MoscowDev/liquivault-frontend/actions/workflows/ci.yml) |
-
-Try the [hosted testnet demo](https://liquivault-testnet-moscowdev.dependablehamster1.chatgpt.site) with Freighter on testnet. Review the [signed Testnet lifecycle and browser evidence status](docs/gates/testnet-terminal-2026-11-18.md) and the [remaining contributor work](docs/wave/README.md).
 
 ## Implemented behavior
 

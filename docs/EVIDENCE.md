@@ -2,6 +2,15 @@
 
 This page distinguishes source verification from network execution. It does not claim a formal proof, independent security audit or real-world underwriting validation. The demonstration's separate verifier key is controlled by the deployment operator; it is not a claimed external commercial auditor.
 
+## Current evidence
+
+| Run | Source revision or environment | Verified result | Receipt |
+| --- | --- | --- | --- |
+| 18 Nov 2026 signed CLI lifecycle | Isolated Stellar Testnet deployment from contracts commit `4955e9566d6e07a2dc05f1d831bda616df384fb5` | 19 confirmed transactions. The invoice settled and deployed capital returned to zero. | [Run report](gates/testnet-terminal-2026-11-18.md) · [Hashes and WASM digests](gates/testnet-terminal-2026-11-18.json) |
+| 19 Nov 2026 archival recovery | Instrumented local ledger from base contracts commit `07de1feef62552607b921e52883bef60ab5b2c61` | Separate footprint restoration and rebuilt withdrawal confirmed. The token balance delta matched the expected amount. | [Recovery receipt](gates/archival-recovery-separate-2026-11-19.json) |
+| 26 Nov 2026 maintainer wallet session | Hosted LiquiVault demo on Stellar Testnet with Varial (formerly Freighter). Hosted build revision unavailable. | Deposit, invoice issuance, separate verifier approval, factoring and settlement confirmed. The session also captured a rejected wallet signature. | [Wallet receipt](gates/wallet-freighter-2026-11-26.json) · [Screenshots](gates/README.md#screenshots) |
+| 28 Nov 2026 external tester return transfer | Stellar Testnet wallet-to-wallet payment | The tester's wallet returned 300 LVTEST to the funding account at ledger 5961439. | [Funding and return payment](#lvtest-wallet-funding-and-return-payment) |
+
 ## Source verification baseline
 
 The November 2026 repair pass verified:

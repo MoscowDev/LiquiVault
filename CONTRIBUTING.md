@@ -4,24 +4,21 @@ Choose the repository that owns the change: [contracts](https://github.com/Mosco
 
 ## Setup
 
-Use Node.js 22.13+ and npm. The frontend depends on the sibling SDK; build/install the SDK first. Contract development requires Rust with the `wasm32v1-none` target. Stellar CLI is only needed for deployment or signed network demonstrations.
+Use Node.js 22.13+ and npm for the frontend and SDK. The frontend installs its pinned public SDK revision through `npm ci`. Start from a standalone frontend checkout:
 
 ```sh
-git clone https://github.com/MoscowDev/liquivault-sdk.git
 git clone https://github.com/MoscowDev/liquivault-frontend.git
-cd liquivault-sdk
-npm ci
-npm run typecheck
-npm test
-npm run build
-cd ../liquivault-frontend
+cd liquivault-frontend
 npm ci
 npm run lint
+npm run typecheck
 npm test
 npm run build
 ```
 
-For contracts, clone the contracts repository and use its exact CI commands. A normal `cargo build` produces rlibs: deployment requires the documented `cargo rustc --crate-type cdylib` commands.
+To run the app locally, follow the [environment and startup steps](README.md#run-locally). For SDK changes or cross-repository debugging, clone the [SDK](https://github.com/MoscowDev/liquivault-sdk#readme) separately and run `npm ci`, `npm run typecheck`, `npm test`, and `npm run build` in that checkout.
+
+For contracts, use Rust with the `wasm32v1-none` target and follow the [contract repository's build and test commands](https://github.com/MoscowDev/liquivault-contracts#readme). Use the documented cdylib build to produce deployable WASM and Stellar CLI for deployment or signed network demonstrations.
 
 ## Working on an issue
 
