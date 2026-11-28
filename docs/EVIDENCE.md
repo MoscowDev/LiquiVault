@@ -35,6 +35,16 @@ A new signed proof completed at 2026-11-11T12:46:02.708Z from contract-source co
 
 This proves signed CLI/chain execution; it does not by itself claim interactive Freighter-extension verification or an independent audit. A separate live session with the Varial (formerly Freighter) extension is recorded in the [wallet record](gates/wallet-freighter-2026-11-26.json).
 
+## LVTEST wallet funding and return payment
+
+| Confirmed (UTC) | Ledger | Operation | Amount | Transaction hash |
+| --- | --- | --- | --- | --- |
+| 2026-11-28 00:52:19 | 5960699 | Stellar Testnet `payment` | 100 LVTEST | [`9c1c67a0377b7ae945a6979fefb00d5845717fae247506d5aff1dc1536d96784`](https://horizon-testnet.stellar.org/transactions/9c1c67a0377b7ae945a6979fefb00d5845717fae247506d5aff1dc1536d96784) |
+| 2026-11-28 01:17:59 | 5961007 | Stellar Testnet `payment` | 1,000 LVTEST | [`ae19d8169ca0424bbebd789b8b9ff0a8dc16613dd72a381fe801c07763693827`](https://horizon-testnet.stellar.org/transactions/ae19d8169ca0424bbebd789b8b9ff0a8dc16613dd72a381fe801c07763693827) |
+| 2026-11-28 01:53:59 | 5961439 | Stellar Testnet `payment` (tester return transfer) | 300 LVTEST | [`571df1a51d8c6e3f13d6f916dd7eb415e6f18a101a1e44faa6a08936a42807a6`](https://horizon-testnet.stellar.org/transactions/571df1a51d8c6e3f13d6f916dd7eb415e6f18a101a1e44faa6a08936a42807a6) |
+
+The two funding payments sent a total of `1,100 LVTEST` to the wallet the maintainer identified as the independent tester's. The tester's wallet then sent `300 LVTEST` back to the same funding account. All three payments used LiquiVault's configured LVTEST issuer, `GCW7P2SWHLMTSQM3BGBB4NO7RPC2FJPQIBKGUL373WMYU3GZU4WJB2U7`. Horizon confirms the wallet-to-wallet payment. The tester's feedback and any LiquiVault deposit evidence are pending.
+
 ## Historical signed testnet evidence
 
 The [archived October record](https://github.com/MoscowDev/liquivault-contracts/blob/main/deployments/testnet-2026-10-24.json) recorded the following October 2026 smoke test, before the capital cap and other repairs:
